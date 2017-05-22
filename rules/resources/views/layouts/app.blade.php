@@ -98,13 +98,16 @@
 			</div>
 			<ul class="navigation">
 				<li>
-					<a href="#"><i class="menu-icon fa fa-check-square"></i><span class="mm-text">Submissions</span></a>
+					<a href="#"><i class="menu-icon fa fa-check-square"></i><span class="mm-text">Sequence</span></a>
 				</li>
 				<li>
-					<a href="#"><i class="menu-icon fa fa-question-circle"></i><span class="mm-text">Questions</span></a>
+					<a href="#"><i class="menu-icon fa fa-question-circle"></i><span class="mm-text">Synthesize</span></a>
 				</li>
 				<li>
-					<a href="#"><i class="menu-icon fa fa-sun-o"></i><span class="mm-text">Spotlights</span></a>
+					<a href="#"><i class="menu-icon fa fa-question-circle"></i><span class="mm-text">Effect</span></a>
+				</li>
+				<li>
+					<a href="#"><i class="menu-icon fa fa-sun-o"></i><span class="mm-text">Mix</span></a>
 				</li>
 				<li>
 					<a href="{{ url('/admin/configuration') }}"><i class="menu-icon fa fa-gear"></i><span class="mm-text">Configuration</span></a>
