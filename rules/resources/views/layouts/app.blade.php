@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>EmberTribe Jobsite - Dashboard</title>
+	<title>RULES</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -63,18 +63,15 @@
 
 					<div class="right clearfix">
 						<ul class="nav navbar-nav pull-right right-navbar-nav">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
-									<img src="{{ 'https://www.gravatar.com/avatar/'.md5('scott.metoyer@gmail.com') }} />" alt="">
-									<span>Scott Metoyer</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
+							<li>
+								<a href="#">
+									<span>112 BPM</span>
+								</a>		
+					        </li>
+								<li><a href="#"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
 									<li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
 									<li class="divider"></li>
 									<li><a href="#"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
-								</ul>
-					        </li>
 						</ul>
 					</div>
 				</div>
