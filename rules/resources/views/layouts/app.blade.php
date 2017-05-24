@@ -68,10 +68,17 @@
 									<span>112 BPM</span>
 								</a>		
 					        </li>
-								<li><a href="#"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Account</a></li>
-									<li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
-									<li class="divider"></li>
-									<li><a href="#"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+							<li>
+								<div id="transport">
+									<a href="#"><i class="fa fa-step-backward"></i></a>&nbsp;
+									<a href="#"><i class="fa fa-stop"></i></a>&nbsp;
+									<a href="#"><i class="fa fa-play"></i></a>&nbsp;
+									<a href="#"><i class="fa fa-step-forward"></i></a>&nbsp;
+								</div>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-cog"></i>&nbsp;&nbsp;Settings</a>
+							</li>
 						</ul>
 					</div>
 				</div>

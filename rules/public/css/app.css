@@ -1,49 +1,12 @@
-.top-buffer { margin-top:20px; }
-
-.popover-trigger {
-    cursor: pointer !important;
-}
-
-.popover {
-    width: 300px;
-}
-
-.short {
-    height: 5em !important;
-}
-
-.widget-messages-alt-item {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-}
-
-a.accordion-toggle {
-    color: white;
-}
-
-a.accordion-toggle.collapsed {
-    color: white !important;
-}
-
-a.accordion-toggle:after {
-    color: white !important;
-}
-
-a.accordion-toggle.collapsed:hover,.accordion-toggle:hover{
-    background-color: #428bca;
-    color: #e8e8e8;
-}
-
-.comment-text {
-    font-size: 11px;
-    color: #515A5A;
-}
-
-#variation-preview iframe {
-    max-width: 100% !important;
-}
-
 .logo {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
+#transport {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#transport > a {
+    color: #000;
+}
