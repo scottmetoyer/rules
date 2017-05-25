@@ -2,34 +2,22 @@
 
 @section('content')
 
-<div class="page-header">
-    <div class="row">
-		<h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-check-square" aria-hidden="true"></i>&nbsp;&nbsp;Submissions</h1>
-
-		<div class="col-xs-12 col-sm-8">
-			<div class="row">
-				<hr class="visible-xs no-grid-gutter-h">
-			    <div class="visible-xs clearfix form-group-margin"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <div class="row">
     <div class="col-md-12">
         <div class="table-light">
             <div class="table-header">
                 <div class="table-caption">
-                    Light Table
+                    Sequence
                 </div>
             </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Instrument</th>
+                        <th>Pattern</th>
+                        <th>Function</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,19 +25,30 @@
                         <td>1</td>
                         <td>Mark</td>
                         <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                            <input type="text" class="step"/>
+                        </td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
+                         <td></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Larry</td>
                         <td>the Bird</td>
                         <td>@twitter</td>
+                         <td></td>
                     </tr>
                 </tbody>
             </table>
