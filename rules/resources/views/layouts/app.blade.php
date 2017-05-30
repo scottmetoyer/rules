@@ -65,15 +65,20 @@
 						<ul class="nav navbar-nav pull-right right-navbar-nav">
 							<li>
 								<a href="#">
-									<span>112 BPM</span>
+									<span>00:00:00</span>
+								</a>
+					        </li>
+							<li>
+								<a href="#">
+									<span id="global-bpm">112</span>&nbsp;BPM
 								</a>		
 					        </li>
 							<li>
 								<div id="transport">
-									<a href="#"><i class="fa fa-step-backward"></i></a>&nbsp;
-									<a href="#"><i class="fa fa-stop"></i></a>&nbsp;
-									<a href="#"><i class="fa fa-play"></i></a>&nbsp;
-									<a href="#"><i class="fa fa-step-forward"></i></a>&nbsp;
+									<a href="#" id="transport-back-button"><i class="fa fa-step-backward"></i></a>&nbsp;
+									<a href="#" id="transport-stop-button"><i class="fa fa-stop"></i></a>&nbsp;
+									<a href="#" id="transport-play-button"><i class="fa fa-play"></i></a>&nbsp;
+									<a href="#" id="transport-forward-button"><i class="fa fa-step-forward"></i></a>&nbsp;
 								</div>
 							</li>
 							<li>
@@ -160,8 +165,10 @@
     <![endif]-->
 
     <!-- Pixel Admin javascript -->
+	<script src="{{ URL::asset('js/Tone.min.js')}}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
+	<script src="{{ URL::asset('js/app.js')}}"></script>
     <script type="text/javascript">
         window.PixelAdmin.start(init);
     </script>
