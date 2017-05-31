@@ -69,7 +69,7 @@
 					        </li>
 							<li>
 								<a href="#">
-									<span id="global-bpm">112</span>&nbsp;BPM
+									<span id="global-bpm"></span>&nbsp;BPM
 								</a>		
 					        </li>
 							<li>
