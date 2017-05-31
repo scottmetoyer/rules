@@ -64,7 +64,7 @@
 						<ul class="nav navbar-nav pull-right right-navbar-nav">
 							<li>
 								<a href="#">
-									<span>00:00:00</span>
+									<span id="transport-time"></span>
 								</a>
 					        </li>
 							<li>
