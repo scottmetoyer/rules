@@ -157,15 +157,26 @@
     <div id="main-menu-bg"></div>
    
 
-    <!-- Pixel Admin javascript -->
+	<!-- Get jQuery from Google CDN -->
+	<!--[if !IE]> -->
+		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
+	<!-- <![endif]-->
+	<!--[if lte IE 9]>
+		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+	<![endif]-->
+	
 	<script src="{{ URL::asset('js/Tone.min.js')}}"></script>
-	<script src="{{ URL::asset('js/manifest.js')}}"></script>
-	<script src="{{ URL::asset('js/vendor.js')}}"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
 	<script src="{{ URL::asset('js/app.js')}}"></script>
-	<script src="{{ URL::asset('js/pixel-admin.js')}}"></script>
-    <script type="text/javascript">
-        window.PixelAdmin.start(init);
-    </script>
+
+	<script type="text/javascript">
+		init.push(function () {
+			// Javascript code here
+		})
+		window.PixelAdmin.start(init);
+	</script>
+
 
 	 @yield('script')
 </div>
