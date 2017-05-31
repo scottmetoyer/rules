@@ -165,7 +165,7 @@
 		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
 	<![endif]-->
 	
-	<script src="{{ URL::asset('js/Tone.min.js')}}"></script>
+	<script src="{{ URL::asset('js/Tone.js')}}"></script>
 	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
 	<script src="{{ URL::asset('js/app.js')}}"></script>
