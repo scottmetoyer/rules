@@ -14,12 +14,11 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
 
 	<!-- Pixel Admin stylesheets -->
-	<link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ URL::asset('css/app.css?v=0002') }}" rel="stylesheet" type="text/css">
 	<link href="{{ URL::asset('css/pixel-admin.min.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ URL::asset('css/widgets.min.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ URL::asset('css/rtl.min.css') }}" rel="stylesheet" type="text/css">
 	<link href="{{ URL::asset('css/themes.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ URL::asset('css/app.css?v=0001') }}" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]>
 		<script src="assets/javascripts/ie.min.js"></script>
 	<![endif]-->
@@ -166,9 +165,8 @@
 
     <!-- Pixel Admin javascript -->
 	<script src="{{ URL::asset('js/Tone.min.js')}}"></script>
-    <script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
 	<script src="{{ URL::asset('js/app.js')}}"></script>
+	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
     <script type="text/javascript">
         window.PixelAdmin.start(init);
     </script>
