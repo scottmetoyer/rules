@@ -53,7 +53,7 @@
 						<ul class="nav navbar-nav pull-right right-navbar-nav">
 							<li>
 								<a href="#">
-									<span>00:00:00</span>
+									<span id="transport-time"></span>
 								</a>
 					        </li>
 							<li>
@@ -145,8 +145,23 @@
 
     <div id="main-menu-bg"></div>
    
+<<<<<<< HEAD
 	<script src="{{ URL::asset('js/manifest.js')}}"></script>
 	<script src="{{ URL::asset('js/vendor.js')}}"></script>
+=======
+
+	<!-- Get jQuery from Google CDN -->
+	<!--[if !IE]> -->
+		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
+	<!-- <![endif]-->
+	<!--[if lte IE 9]>
+		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+	<![endif]-->
+	
+	<script src="{{ URL::asset('js/Tone.js')}}"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
+>>>>>>> 2aaea98d57b6423059250ddbf0d667ad2b22962e
 	<script src="{{ URL::asset('js/app.js')}}"></script>
 
 	<script type="text/javascript"></script>
