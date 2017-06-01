@@ -10,18 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-	<!-- Open Sans font from Google CDN -->
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
-
-	<!-- Pixel Admin stylesheets -->
-	<link href="{{ URL::asset('css/app.css?v=0002') }}" rel="stylesheet" type="text/css">
-	<link href="{{ URL::asset('css/pixel-admin.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ URL::asset('css/widgets.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ URL::asset('css/rtl.min.css') }}" rel="stylesheet" type="text/css">
-	<link href="{{ URL::asset('css/themes.min.css') }}" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]>
-		<script src="assets/javascripts/ie.min.js"></script>
-	<![endif]-->
+	<link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css">
 
     <script>
 		// Auto close alerts
@@ -156,27 +145,11 @@
 
     <div id="main-menu-bg"></div>
    
-
-	<!-- Get jQuery from Google CDN -->
-	<!--[if !IE]> -->
-		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
-	<!-- <![endif]-->
-	<!--[if lte IE 9]>
-		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
-	<![endif]-->
-	
-	<script src="{{ URL::asset('js/Tone.min.js')}}"></script>
-	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
-	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
+	<script src="{{ URL::asset('js/manifest.js')}}"></script>
+	<script src="{{ URL::asset('js/vendor.js')}}"></script>
 	<script src="{{ URL::asset('js/app.js')}}"></script>
 
-	<script type="text/javascript">
-		init.push(function () {
-			// Javascript code here
-		})
-		window.PixelAdmin.start(init);
-	</script>
-
+	<script type="text/javascript"></script>
 
 	 @yield('script')
 </div>
