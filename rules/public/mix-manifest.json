@@ -4,5 +4,8 @@
   "/js/vendor.js": "/js/vendor.js",
   "/js/manifest.js": "/js/manifest.js",
   "all.js": "all.js",
-  "/js/all.js": "/js/all.js"
+  "/js/all.js": "/js/all.js",
+  "/mix.js": "/mix.js",
+  "/css/custom.css": "/css/custom.css",
+  "/js/pixeladmin.js": "/js/pixeladmin.js"
 }

@@ -15,9 +15,12 @@ mix.js([
     'resources/assets/js/app.js'
         ], 'public/js')
     .extract(['vue', 'jquery', 'bootstrap-sass'])
-    .sass(
-        ['resources/assets/sass/app.scss',
-    ], 'public/css')
+    .scripts([
+        'resources/assets/js/pace.min.js',
+        'resources/assets/js/pixeladmin.min.js'
+    ], 'public/js/pixeladmin.js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .sass('resources/assets/sass/custom.scss', 'public/css')
     .autoload({
         jquery: ['$', 'jQuery', 'window.jQuery']
     });

@@ -1,172 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<!--[if IE 8]>         <html class="ie8"> <![endif]-->
-<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>RULES</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-	<link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css">
-
-    <script>
-		// Auto close alerts
-		window.setTimeout(function() {
-			$(".alert").fadeTo(500, 0).slideUp(500, function(){
-				$(this).remove(); 
-			});
-		}, 4000);
-
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-
-		var root = "#";
-    </script>
+	<title>RULES</title>
+	<link href="css/app.css" rel="stylesheet" type="text/css">
+	<link href="css/custom.css" rel="stylesheet" type="text/css">
 </head>
+<body>
 
-<body class="theme-default main-menu-animated">
-<script>var init = [];</script>
-<div id="main-wrapper">
-	<div id="main-navbar" class="navbar navbar-inverse" role="navigation">
-		<button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
-		<div class="navbar-inner">
-			<div class="navbar-header">
-				<a href="#" class="navbar-brand">
-					<img src="{{ asset('images/logo_small.png') }}" alt="logo" class="logo" />
-				</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
-			</div>
+	<nav class="px-nav px-nav-left">
+		<button type="button" class="px-nav-toggle" data-toggle="px-nav">
+			<span class="px-nav-toggle-arrow"></span>
+			<span class="navbar-toggle-icon"></span>
+			<span class="px-nav-toggle-label font-size-11">HIDE MENU</span>
+		</button>
 
-			<div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
-				<div>
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="#">Home</a>
-						</li>
-					</ul>
-
-					<div class="right clearfix">
-						<ul class="nav navbar-nav pull-right right-navbar-nav">
-							<li>
-								<a href="#">
-									<span id="transport-time"></span>
-								</a>
-					        </li>
-							<li>
-								<a href="#">
-									<span id="global-bpm"></span>&nbsp;BPM
-								</a>		
-					        </li>
-							<li>
-								<div id="transport">
-									<a href="#" id="transport-back-button"><i class="fa fa-step-backward"></i></a>&nbsp;
-									<a href="#" id="transport-stop-button"><i class="fa fa-stop"></i></a>&nbsp;
-									<a href="#" id="transport-play-button"><i class="fa fa-play"></i></a>&nbsp;
-									<a href="#" id="transport-forward-button"><i class="fa fa-step-forward"></i></a>&nbsp;
-								</div>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-cog"></i>&nbsp;&nbsp;Settings</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		<ul class="px-nav-content">
+			<li class="px-nav-item active">
+				<a href="index.html"><i class="px-nav-icon ion-home"></i><span class="px-nav-label">Sequence</span></a>
+			</li>
+			<li class="px-nav-item">
+				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Synthesize</span></a>
+			</li>
+			<li class="px-nav-item">
+				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Effect</span></a>
+			</li>
+				<li class="px-nav-item">
+			<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Mix</span></a>
+				</li>
+			<li class="px-nav-item">
+				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Configuration</span></a>
+			</li>
+		</ul>
+	</nav>
+ 
+	<nav class="navbar px-navbar">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Your Company</a>
 		</div>
-	</div>
 
-	<div id="main-menu" role="navigation">
-		<div id="main-menu-inner">
-			<div class="menu-content top" id="menu-content-demo">
-				<div>
-					<div class="text-bg"><span class="text-semibold">Scott Metoyer</span></div>
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
 
-					<img src="{{ 'https://www.gravatar.com/avatar/'.md5("scott.metoyer@gmail.com") }} />" alt="">
-					<div class="btn-group">
-						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
-						<a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
-						<a href="#" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
-					</div>
-				</div>
-			</div>
-			<ul class="navigation">
-				<li>
-					<a href="#"><i class="menu-icon fa fa-check-square"></i><span class="mm-text">Sequence</span></a>
-				</li>
-				<li>
-					<a href="#"><i class="menu-icon fa fa-question-circle"></i><span class="mm-text">Synthesize</span></a>
-				</li>
-				<li>
-					<a href="#"><i class="menu-icon fa fa-question-circle"></i><span class="mm-text">Effect</span></a>
-				</li>
-				<li>
-					<a href="#"><i class="menu-icon fa fa-sun-o"></i><span class="mm-text">Mix</span></a>
-				</li>
-				<li>
-					<a href="{{ url('/admin/configuration') }}"><i class="menu-icon fa fa-gear"></i><span class="mm-text">Configuration</span></a>
-				</li>
+		<div class="collapse navbar-collapse" id="px-navbar-collapse">
+			<ul class="nav navbar-nav">
+			<li><a href="#">Link</a></a>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				Dropdown
+				</a>
+				<ul class="dropdown-menu">
+				<li><a href="#">First item</a></li>
+				<li><a href="#">Second item</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Third item</a></li>
+				</ul>
+			</li>
 			</ul>
 		</div>
-	</div>
-    <div id="content-wrapper">
+	</nav>
 
-	@if ($errors->all())
-    <div class="alert alert-danger alert-page">
-    	<h5><strong><span class="fa fa-exclamation-circle"></span>&nbsp;&nbsp;ERROR NOTICE</strong></h5>
-    	<ul class="list-unstyled">
-        @foreach ($errors->all() as $error)
-        	<li><span class="fa fa-remove"></span>&nbsp;&nbsp;{!! $error !!}</li>
-        @endforeach
-        </ul>
-    </div>
-    @endif
+	<div class="px-content">
+		@yield('content')
+	</div>
+
+	<!-- Footer -->
+	<footer class="px-footer px-footer-bottom">
+		Footer content goes here
+	</footer>
 	
-    @if (Session::get('message'))
-	<div class="alert alert-success alert-page">
-    	<button type="button" class="close" data-dismiss="alert">&times;</button>
-        {!! Session::get('message') !!}
-    </div>
-    @endif
-
-	@if (Session::get('error'))
-	<div class="alert alert-danger alert-page">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		{!! Session::get('error') !!}
-	</div>
-	@endif
-
-    @yield('content')
-    
-    </div>
-
-    <div id="main-menu-bg"></div>
-   
-<<<<<<< HEAD
 	<script src="{{ URL::asset('js/manifest.js')}}"></script>
 	<script src="{{ URL::asset('js/vendor.js')}}"></script>
-=======
-
-	<!-- Get jQuery from Google CDN -->
-	<!--[if !IE]> -->
-		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
-	<!-- <![endif]-->
-	<!--[if lte IE 9]>
-		<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
-	<![endif]-->
-	
-	<script src="{{ URL::asset('js/Tone.js')}}"></script>
-	<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
-	<script src="{{ URL::asset('js/pixel-admin.min.js')}}"></script>
->>>>>>> 2aaea98d57b6423059250ddbf0d667ad2b22962e
 	<script src="{{ URL::asset('js/app.js')}}"></script>
 
-	<script type="text/javascript"></script>
-
-	 @yield('script')
-</div>
+	<script src="{{ URL::asset('js/pixeladmin.js')}}"></script>
 </body>
 </html>
