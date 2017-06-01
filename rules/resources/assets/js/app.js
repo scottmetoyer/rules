@@ -16,7 +16,17 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('transport', require('./components/Transport.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: { 
+            message: 'Hello World' ,
+            count: 0
+        },
+    methods: {
+        updatecount: function() {
+            this.count += 1;
+        }
+    }
 });
