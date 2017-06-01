@@ -735,7 +735,7 @@ module.exports = function normalizeComponent (
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
+/* WEBPACK VAR INJECTION */(function(Tone) {
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -743,7 +743,6 @@ module.exports = function normalizeComponent (
  */
 
 __webpack_require__(36);
-
 window.Vue = __webpack_require__(6);
 
 /**
@@ -752,6 +751,20 @@ window.Vue = __webpack_require__(6);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Override the Tone.js toBarsBeatsSixteenths method to clean up the display
+Tone.Time.prototype.toBarsBeatsSixteenths = function () {
+    var quarterTime = this._beatsToUnits(1);
+    var quarters = this.toSeconds() / quarterTime;
+    var measures = Math.floor(quarters / this._timeSignature());
+    var sixteenths = quarters % 1 * 4;
+    quarters = Math.floor(quarters) % this._timeSignature();
+    sixteenths = sixteenths.toString();
+    sixteenths = parseFloat(sixteenths).toFixed(3);
+    var progress = [measures, quarters, sixteenths];
+    return progress.join(':');
+};
+
+// Initialize Vue
 Vue.component('example', __webpack_require__(39));
 Vue.component('transport', __webpack_require__(40));
 
@@ -767,6 +780,7 @@ var app = new Vue({
         }
     }
 });
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 14 */
@@ -19076,7 +19090,7 @@ var Component = __webpack_require__(12)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19110,7 +19124,7 @@ var Component = __webpack_require__(12)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19175,7 +19189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "global-bpm"
     }
-  }), _vm._v(" BPM\r\n\t\t")])])
+  }), _vm._v(" BPM\n\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "border-left"

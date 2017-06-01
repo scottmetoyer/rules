@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-
 window.Vue = require('vue');
 
 /**
@@ -15,6 +14,24 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Override the Tone.js toBarsBeatsSixteenths method to clean up the display
+Tone.Time.prototype.toBarsBeatsSixteenths = function () {
+	        var quarterTime = this._beatsToUnits(1);
+	        var quarters = this.toSeconds() / quarterTime;
+	        var measures = Math.floor(quarters / this._timeSignature());
+	        var sixteenths = quarters % 1 * 4;
+	        quarters = Math.floor(quarters) % this._timeSignature();
+	        sixteenths = sixteenths.toString();
+	        sixteenths = parseFloat(sixteenths).toFixed(3);
+	        var progress = [
+	            measures,
+	            quarters,
+	            sixteenths
+	        ];
+	        return progress.join(':');
+	    };
+
+// Initialize Vue
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('transport', require('./components/Transport.vue'));
 
