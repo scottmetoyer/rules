@@ -21,19 +21,19 @@
 
 		<ul class="px-nav-content">
 			<li class="px-nav-item active">
-				<a href="index.html"><i class="px-nav-icon ion-home"></i><span class="px-nav-label">Sequence</span></a>
+				<a href="index.html"><i class="px-nav-icon ion-grid"></i><span class="px-nav-label">Sequence</span></a>
 			</li>
 			<li class="px-nav-item">
-				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Synthesize</span></a>
+				<a href="second.html"><i class="px-nav-icon ion-radio-waves"></i><span class="px-nav-label">Synthesize</span></a>
 			</li>
 			<li class="px-nav-item">
-				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Effect</span></a>
+				<a href="second.html"><i class="px-nav-icon ion-erlenmeyer-flask"></i><span class="px-nav-label">Effect</span></a>
 			</li>
 				<li class="px-nav-item">
-			<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Mix</span></a>
+			<a href="second.html"><i class="px-nav-icon ion-levels"></i><span class="px-nav-label">Mix</span></a>
 				</li>
 			<li class="px-nav-item">
-				<a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Configuration</span></a>
+				<a href="second.html"><i class="px-nav-icon ion-gear-b"></i><span class="px-nav-label">Config</span></a>
 			</li>
 		</ul>
 	</nav>
@@ -46,10 +46,6 @@
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
 
 		<div class="collapse navbar-collapse" id="px-navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="#">Link</a></a>
-			</ul>
-
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					<a href="#">
