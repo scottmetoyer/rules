@@ -40,28 +40,42 @@
  
 	<nav class="navbar px-navbar">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Your Company</a>
+			<a class="navbar-brand" href="#"><img src="{{ asset('images/logo_small.png') }}" alt="logo" class="logo" /></a>
 		</div>
 
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
 
 		<div class="collapse navbar-collapse" id="px-navbar-collapse">
 			<ul class="nav navbar-nav">
-			<li><a href="#">Link</a></a>
+				<li><a href="#">Link</a></a>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				Dropdown
-				</a>
-				<ul class="dropdown-menu">
-				<li><a href="#">First item</a></li>
-				<li><a href="#">Second item</a></li>
-				<li class="divider"></li>
-				<li><a href="#">Third item</a></li>
-				</ul>
-			</li>
+				<li>
+					<a href="#">
+						<span>00:00:00</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span id="global-bpm"></span>&nbsp;BPM
+					</a>		
+				</li>
+				<li class="border-left">
+					<a href="#" id="transport-back-button"><i class="fa fa-step-backward"></i></a>
+				</li>
+				<li>
+					<a href="#" id="transport-stop-button"><i class="fa fa-stop"></i></a>
+				</li>
+				<li>
+					<a href="#" id="transport-play-button"><i class="fa fa-play"></i></a>
+				</li>
+				<li class="border-right">
+					<a href="#" id="transport-forward-button"><i class="fa fa-step-forward"></i></a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-cog"></i>&nbsp;&nbsp;Config</a>
+				</li>
 			</ul>
 		</div>
 	</nav>

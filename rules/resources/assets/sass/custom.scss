@@ -1,5 +1,5 @@
 .logo {
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 #transport {
@@ -12,9 +12,18 @@
 }
 
 .step {
-    height: 20px;
-    width: 20px;
-    font-size: 8px;
-    padding: 1px;
+    height: 24px;
+    width: 24px;
+    font-size: 9px;
+    padding: 0px;
     text-align: center;
+    vertical-align: middle;
+}
+
+.border-right {
+    border-right: solid 1px #fff !important;
+}
+
+.border-left {
+    border-left: solid 1px #fff !important;
 }
