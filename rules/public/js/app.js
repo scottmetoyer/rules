@@ -1707,9 +1707,9 @@ var synth = new Tone.Synth().toMaster();
     mounted: function mounted() {
         this.sequence = new Tone.Part(function (time, event) {
             synth.triggerAttackRelease(event.note, event.dur, time);
-        }, [{ time: 0, note: 'C4', dur: '4n' }, { time: '4n + 8n', note: 'E4', dur: '8n' }, { time: '2n', note: 'G4', dur: '16n' }, { time: '2n + 8t', note: 'B4', dur: '4n' }]);
+        }, [{ time: '0:0:0', note: 'C4', dur: '1n' }, { time: '0:1:2', note: 'D4', dur: '1n' }, { time: '0:2:0', note: 'E4', dur: '1n' }, { time: '0:3:0', note: 'F4', dur: '1n' }]);
 
-        this.sequence.start(5);
+        this.sequence.start();
         this.sequence.loop = true;
     },
 
@@ -19139,7 +19139,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19173,7 +19173,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19207,7 +19207,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19272,7 +19272,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "global-bpm"
     }
-  }), _vm._v(" BPM\n\t\t")])])
+  }), _vm._v(" BPM\r\n\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "border-left"
