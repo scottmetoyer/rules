@@ -39,8 +39,11 @@ export default {
                 { time : '0:2:0', note : 'E4', dur : '1n'},
                 { time : '0:3:0', note : 'F4', dur : '1n'}]);
             
-            this.sequence.start(0);
             this.sequence.loop = true;
+            this.sequence.loopStart = "0:0:0";
+            this.sequence.loopEnd = "0:3:1"
+
+            this.sequence.start(0);
         },
 
     	methods: {
