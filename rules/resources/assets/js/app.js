@@ -34,6 +34,7 @@ Tone.Time.prototype.toBarsBeatsSixteenths = function () {
 // Initialize Vue
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('transport', require('./components/Transport.vue'));
+Vue.component('sequence', require('./components/Sequence.vue'));
 
 const app = new Vue({
     el: '#app',

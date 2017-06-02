@@ -13,7 +13,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Instrument</th>
                         <th>Pattern</th>
@@ -21,46 +21,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <input type="text" class="step"/>
-                            <button class="step"><i class="fa fa-minus"></i></button>
-                            <button class="step"><i class="fa fa-plus"></i></button>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                         <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                         <td></td>
-                    </tr>
+                    <tr is="sequence"></tr>
+                    <tr is="sequence"></tr>
+                    <tr is="sequence"></tr>
+                    <tr is="sequence"></tr>
                 </tbody>
             </table>
             <div class="table-footer">

@@ -32,15 +32,6 @@
 	export default {
 		mounted() {
             console.log('Transport initialized');
-
-			/*
-			function updateTime(){
-				requestAnimationFrame(updateTime)
-				document.querySelector('#transport-position').textContent = Tone.Transport.position;
-			}
-			
-			updateTime();
-			*/
         },
 
     	methods: {
