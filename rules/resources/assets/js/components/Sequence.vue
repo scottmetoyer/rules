@@ -28,9 +28,19 @@
 </template>
 
 <script>
+var synth = new Tone.Synth().toMaster();
+
 export default {
 		mounted() {
-            console.log('Sequence initialized');
+            this.sequence = new Tone.Part(function(time, event){
+                synth.triggerAttackRelease(event.note, event.dur, time)
+            }, [{ time : 0, note : 'C4', dur : '4n'},
+                { time : '4n + 8n', note : 'E4', dur : '8n'},
+                { time : '2n', note : 'G4', dur : '16n'},
+                { time : '2n + 8t', note : 'B4', dur : '4n'}]);
+            
+            this.sequence.start(5);
+            this.sequence.loop = true;
         },
 
     	methods: {
@@ -38,6 +48,7 @@ export default {
 
 		data: function() {
 			return {
+				sequence: {}
 			}
 		}
     }

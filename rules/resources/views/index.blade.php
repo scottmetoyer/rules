@@ -22,9 +22,6 @@
                 </thead>
                 <tbody>
                     <tr is="sequence"></tr>
-                    <tr is="sequence"></tr>
-                    <tr is="sequence"></tr>
-                    <tr is="sequence"></tr>
                 </tbody>
             </table>
             <div class="table-footer">

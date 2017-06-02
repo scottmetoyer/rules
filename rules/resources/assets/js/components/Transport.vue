@@ -31,7 +31,6 @@
 <script>
 	export default {
 		mounted() {
-            console.log('Transport initialized');
         },
 
     	methods: {

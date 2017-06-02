@@ -1670,7 +1670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(Tone) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -1700,19 +1700,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+var synth = new Tone.Synth().toMaster();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {
-		console.log('Sequence initialized');
-	},
+    mounted: function mounted() {
+        this.sequence = new Tone.Part(function (time, event) {
+            synth.triggerAttackRelease(event.note, event.dur, time);
+        }, [{ time: 0, note: 'C4', dur: '4n' }, { time: '4n + 8n', note: 'E4', dur: '8n' }, { time: '2n', note: 'G4', dur: '16n' }, { time: '2n + 8t', note: 'B4', dur: '4n' }]);
+
+        this.sequence.start(5);
+        this.sequence.loop = true;
+    },
 
 
-	methods: {},
+    methods: {},
 
-	data: function data() {
-		return {};
-	}
+    data: function data() {
+        return {
+            sequence: {}
+        };
+    }
 });
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 36 */
@@ -1752,9 +1762,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {
-		console.log('Transport initialized');
-	},
+	mounted: function mounted() {},
 
 
 	methods: {
