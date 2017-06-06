@@ -1707,11 +1707,11 @@ var synth = new Tone.Synth().toMaster();
     mounted: function mounted() {
         this.sequence = new Tone.Part(function (time, event) {
             synth.triggerAttackRelease(event.note, event.dur, time);
-        }, [{ time: '0:0:0', note: 'C4', dur: '1n' }, { time: '0:1:0', note: 'D4', dur: '1n' }, { time: '0:2:0', note: 'E4', dur: '1n' }, { time: '0:3:0', note: 'F4', dur: '1n' }]);
+        }, this.notes);
 
         this.sequence.loop = true;
-        this.sequence.loopStart = "0:0:0";
-        this.sequence.loopEnd = "0:3:1";
+        // this.sequence.loopStart = "0:0:0";
+        // this.sequence.loopEnd = "0:3:1"
 
         this.sequence.start(0);
     },
@@ -1721,7 +1721,8 @@ var synth = new Tone.Synth().toMaster();
 
     data: function data() {
         return {
-            sequence: {}
+            sequence: {},
+            notes: [{ note: 'C4', time: '0:0:0', dur: '4n' }, { note: 'C4', time: '0:0:1', dur: '4n' }, { note: 'D4', time: '0:0:2', dur: '4n' }, { note: 'E4', time: '0:0:3', dur: '4n' }, { note: 'F4', time: '0:0:4', dur: '4n' }, { note: 'G4', time: '0:0:5', dur: '4n' }, { note: 'F4', time: '0:0:6', dur: '4n' }, { note: 'E4', time: '0:0:7', dur: '4n' }, { note: 'D4', time: '0:0:8', dur: '4n' }, { note: 'D4', time: '0:0:9', dur: '4n' }, { note: 'D3', time: '0:0:10', dur: '4n' }, { note: 'D2', time: '0:0:11', dur: '4n' }, { note: 'A2', time: '0:0:12', dur: '4n' }, { note: 'B3', time: '0:0:13', dur: '4n' }, { note: 'C4', time: '0:0:14', dur: '4n' }, { note: 'D5', time: '0:0:15', dur: '4n' }]
         };
     }
 });
@@ -19142,7 +19143,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19176,7 +19177,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19210,7 +19211,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19275,7 +19276,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "global-bpm"
     }
-  }), _vm._v(" BPM\r\n\t\t")])])
+  }), _vm._v(" BPM\n\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "border-left"
@@ -19349,97 +19350,339 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[0].note),
+      expression: "notes[0].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[0].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[0].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[1].note),
+      expression: "notes[1].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[1].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[1].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[2].note),
+      expression: "notes[2].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[2].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[2].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[3].note),
+      expression: "notes[3].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[3].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[3].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[4].note),
+      expression: "notes[4].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[4].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[4].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[5].note),
+      expression: "notes[5].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[5].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[5].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[6].note),
+      expression: "notes[6].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[6].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[6].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[7].note),
+      expression: "notes[7].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[7].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[7].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[8].note),
+      expression: "notes[8].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[8].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[8].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[9].note),
+      expression: "notes[9].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[9].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[9].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[10].note),
+      expression: "notes[10].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[10].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[10].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[11].note),
+      expression: "notes[11].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[11].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[11].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[12].note),
+      expression: "notes[12].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[12].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[12].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[13].note),
+      expression: "notes[13].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[13].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[13].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[14].note),
+      expression: "notes[14].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[14].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[14].note = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.notes[15].note),
+      expression: "notes[15].note"
+    }],
     staticClass: "step",
     attrs: {
       "type": "text"
+    },
+    domProps: {
+      "value": (_vm.notes[15].note)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.notes[15].note = $event.target.value
+      }
     }
-  }), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
     staticClass: "step"
   }, [_c('i', {
     staticClass: "fa fa-minus"
-  })]), _vm._v(" "), _c('button', {
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
     staticClass: "step"
   }, [_c('i', {
     staticClass: "fa fa-plus"
-  })])]), _vm._v(" "), _c('td')])
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
