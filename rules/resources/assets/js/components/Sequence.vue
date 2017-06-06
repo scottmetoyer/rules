@@ -33,6 +33,7 @@ var synth = new Tone.Synth().toMaster();
 export default {
 		mounted() {
             this.sequence = new Tone.Part(function(time, event){
+                // Reset all the steps to 'not playing'
                 event.error = false;
 
                 // Check for empty textbox
@@ -65,7 +66,7 @@ export default {
                         { note: 'C4', time: '0:0:0', dur: '4n', error: false }, 
                         { note: 'C4', time: '0:0:1', dur: '4n', error: false }, 
                         { note: 'D4', time: '0:0:2', dur: '4n', error: false }, 
-                        { note: 'E4', time: '0:0:3', dur: '4n', error: false },  
+                        { note: 'E4', time: '0:0:3', dur: '4n', error: false }, 
                         { note: 'F4', time: '0:0:4', dur: '4n', error: false }, 
                         { note: 'G4', time: '0:0:5', dur: '4n', error: false }, 
                         { note: 'F4', time: '0:0:6', dur: '4n', error: false }, 
@@ -77,7 +78,7 @@ export default {
                         { note: 'A2', time: '0:0:12', dur: '4n', error: false }, 
                         { note: 'B3', time: '0:0:13', dur: '4n', error: false }, 
                         { note: 'C4', time: '0:0:14', dur: '4n', error: false }, 
-                        { note: 'D5', time: '0:0:15', dur: '4n', error: false }
+                        { note: 'D5', time: '0:0:15', dur: '4n', error: false }, 
                     ]
 			}
 		}
@@ -86,5 +87,9 @@ export default {
 <style scoped>
 .error {
     background-color: #ffcccc;
+}
+
+.playing {
+    border-bottom: solid 1px #00AC60 !important;
 }
 </style>

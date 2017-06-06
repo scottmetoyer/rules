@@ -1706,6 +1706,7 @@ var synth = new Tone.Synth().toMaster();
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         this.sequence = new Tone.Part(function (time, event) {
+            // Reset all the steps to 'not playing'
             event.error = false;
 
             // Check for empty textbox
@@ -1863,7 +1864,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n.error[data-v-cf9bd840] {\r\n    background-color: #ffcccc;\n}\r\n", ""]);
+exports.push([module.i, "\n.playing[data-v-cf9bd840] {\r\n    border-bottom: solid 1px #00AC60 !important;\n}\r\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -19437,7 +19438,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[0].error
+      'has-error': _vm.notes[0].error
     },
     attrs: {
       "type": "text"
@@ -19460,7 +19461,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[1].error
+      'has-error': _vm.notes[1].error
     },
     attrs: {
       "type": "text"
@@ -19483,7 +19484,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[0].error
+      'has-error': _vm.notes[0].error
     },
     attrs: {
       "type": "text"
@@ -19506,7 +19507,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[3].error
+      'has-error': _vm.notes[3].error
     },
     attrs: {
       "type": "text"
@@ -19529,7 +19530,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[4].error
+      'has-error': _vm.notes[4].error
     },
     attrs: {
       "type": "text"
@@ -19552,7 +19553,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[5].error
+      'has-error': _vm.notes[5].error
     },
     attrs: {
       "type": "text"
@@ -19575,7 +19576,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[6].error
+      'has-error': _vm.notes[6].error
     },
     attrs: {
       "type": "text"
@@ -19598,7 +19599,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[7].error
+      'has-error': _vm.notes[7].error
     },
     attrs: {
       "type": "text"
@@ -19621,7 +19622,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[8].error
+      'has-error': _vm.notes[8].error
     },
     attrs: {
       "type": "text"
@@ -19644,7 +19645,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[9].error
+      'has-error': _vm.notes[9].error
     },
     attrs: {
       "type": "text"
@@ -19667,7 +19668,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[10].error
+      'has-error': _vm.notes[10].error
     },
     attrs: {
       "type": "text"
@@ -19690,7 +19691,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[11].error
+      'has-error': _vm.notes[11].error
     },
     attrs: {
       "type": "text"
@@ -19713,7 +19714,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[12].error
+      'has-error': _vm.notes[12].error
     },
     attrs: {
       "type": "text"
@@ -19736,7 +19737,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[13].error
+      'has-error': _vm.notes[13].error
     },
     attrs: {
       "type": "text"
@@ -19759,7 +19760,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[14].error
+      'has-error': _vm.notes[14].error
     },
     attrs: {
       "type": "text"
@@ -19782,7 +19783,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[15].error
+      'has-error': _vm.notes[15].error
     },
     attrs: {
       "type": "text"
