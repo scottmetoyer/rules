@@ -1705,8 +1705,16 @@ var synth = new Tone.Synth().toMaster();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        this.sequence = new Tone.Part(function (time, event) {
-            event.error = false;
+        var self = this;
+        self.sequence = new Tone.Part(function (time, event) {
+            event.hasError = false;
+
+            // Clear the playing class from all the steps
+            self.notes.map(function (x) {
+                x.isPlaying = false;
+                return x;
+            });
+            event.isPlaying = true;
 
             // Check for empty textbox
             if (/\S/.test(event.note)) {
@@ -1715,16 +1723,16 @@ var synth = new Tone.Synth().toMaster();
                     synth.triggerAttackRelease(t, event.dur, time);
                 } catch (error) {
                     // Change the color of the textbox if it has invalid input
-                    event.error = true;
+                    event.hasError = true;
                 }
             }
-        }, this.notes);
+        }, self.notes);
 
-        this.sequence.loop = true;
+        self.sequence.loop = true;
         // this.sequence.loopStart = "0:0:0";
         // this.sequence.loopEnd = "0:3:1"
 
-        this.sequence.start(0);
+        self.sequence.start(0);
     },
 
 
@@ -1733,7 +1741,7 @@ var synth = new Tone.Synth().toMaster();
     data: function data() {
         return {
             sequence: {},
-            notes: [{ note: 'C4', time: '0:0:0', dur: '4n', error: false }, { note: 'C4', time: '0:0:1', dur: '4n', error: false }, { note: 'D4', time: '0:0:2', dur: '4n', error: false }, { note: 'E4', time: '0:0:3', dur: '4n', error: false }, { note: 'F4', time: '0:0:4', dur: '4n', error: false }, { note: 'G4', time: '0:0:5', dur: '4n', error: false }, { note: 'F4', time: '0:0:6', dur: '4n', error: false }, { note: 'E4', time: '0:0:7', dur: '4n', error: false }, { note: 'D4', time: '0:0:8', dur: '4n', error: false }, { note: 'D4', time: '0:0:9', dur: '4n', error: false }, { note: 'D3', time: '0:0:10', dur: '4n', error: false }, { note: 'D2', time: '0:0:11', dur: '4n', error: false }, { note: 'A2', time: '0:0:12', dur: '4n', error: false }, { note: 'B3', time: '0:0:13', dur: '4n', error: false }, { note: 'C4', time: '0:0:14', dur: '4n', error: false }, { note: 'D5', time: '0:0:15', dur: '4n', error: false }]
+            notes: [{ note: 'C4', time: '0:0:0', dur: '4n', hasError: false, isPlaying: false }, { note: 'C4', time: '0:0:1', dur: '4n', hasError: false, isPlaying: false }, { note: 'D4', time: '0:0:2', dur: '4n', hasError: false, isPlaying: false }, { note: 'E4', time: '0:0:3', dur: '4n', hasError: false, isPlaying: false }, { note: 'F4', time: '0:0:4', dur: '4n', hasError: false, isPlaying: false }, { note: 'G4', time: '0:0:5', dur: '4n', hasError: false, isPlaying: false }, { note: 'F4', time: '0:0:6', dur: '4n', hasError: false, isPlaying: false }, { note: 'E4', time: '0:0:7', dur: '4n', hasError: false, isPlaying: false }, { note: 'D4', time: '0:0:8', dur: '4n', hasError: false, isPlaying: false }, { note: 'D4', time: '0:0:9', dur: '4n', hasError: false, isPlaying: false }, { note: 'D3', time: '0:0:10', dur: '4n', hasError: false, isPlaying: false }, { note: 'D2', time: '0:0:11', dur: '4n', hasError: false, isPlaying: false }, { note: 'A2', time: '0:0:12', dur: '4n', hasError: false, isPlaying: false }, { note: 'B3', time: '0:0:13', dur: '4n', hasError: false, isPlaying: false }, { note: 'C4', time: '0:0:14', dur: '4n', hasError: false, isPlaying: false }, { note: 'D5', time: '0:0:15', dur: '4n', hasError: false, isPlaying: false }]
         };
     }
 });
@@ -1863,7 +1871,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n.error[data-v-cf9bd840] {\r\n    background-color: #ffcccc;\n}\r\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\n    background-color: #FFCCCC;\n}\n.step[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n    border: solid 1px #CCC;\n    border-bottom: solid 2px #CCC;\n}\n.sequence-button[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\n    border-bottom: solid 2px #009900;\n}\n\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -19217,7 +19225,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19255,7 +19263,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19289,7 +19297,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19354,7 +19362,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "global-bpm"
     }
-  }), _vm._v(" BPM\r\n\t\t")])])
+  }), _vm._v(" BPM\n\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "border-left"
@@ -19437,7 +19445,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[0].error
+      'has-error': _vm.notes[0].hasError, 'is-playing': _vm.notes[0].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19460,7 +19468,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[1].error
+      'has-error': _vm.notes[1].hasError, 'is-playing': _vm.notes[1].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19483,7 +19491,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[0].error
+      'has-error': _vm.notes[0].hasError, 'is-playing': _vm.notes[2].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19506,7 +19514,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[3].error
+      'has-error': _vm.notes[3].hasError, 'is-playing': _vm.notes[3].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19529,7 +19537,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[4].error
+      'has-error': _vm.notes[4].hasError, 'is-playing': _vm.notes[4].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19552,7 +19560,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[5].error
+      'has-error': _vm.notes[5].hasError, 'is-playing': _vm.notes[5].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19575,7 +19583,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[6].error
+      'has-error': _vm.notes[6].hasError, 'is-playing': _vm.notes[6].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19598,7 +19606,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[7].error
+      'has-error': _vm.notes[7].hasError, 'is-playing': _vm.notes[7].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19621,7 +19629,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[8].error
+      'has-error': _vm.notes[8].hasError, 'is-playing': _vm.notes[8].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19644,7 +19652,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[9].error
+      'has-error': _vm.notes[9].hasError, 'is-playing': _vm.notes[9].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19667,7 +19675,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[10].error
+      'has-error': _vm.notes[10].hasError, 'is-playing': _vm.notes[10].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19690,7 +19698,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[11].error
+      'has-error': _vm.notes[11].hasError, 'is-playing': _vm.notes[11].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19713,7 +19721,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[12].error
+      'has-error': _vm.notes[12].hasError, 'is-playing': _vm.notes[12].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19736,7 +19744,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[13].error
+      'has-error': _vm.notes[13].hasError, 'is-playing': _vm.notes[13].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19759,7 +19767,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[14].error
+      'has-error': _vm.notes[14].hasError, 'is-playing': _vm.notes[14].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19782,7 +19790,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "step",
     class: {
-      error: _vm.notes[15].error
+      'has-error': _vm.notes[15].hasError, 'is-playing': _vm.notes[15].isPlaying
     },
     attrs: {
       "type": "text"
@@ -19799,13 +19807,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
-    staticClass: "step"
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-minus"
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
-    staticClass: "step"
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-plus"
   })])
