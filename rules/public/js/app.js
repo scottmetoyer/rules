@@ -1687,45 +1687,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var synth = new Tone.Synth().toMaster();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        this.sequence = new Tone.Part(function (time, event) {
-            // Reset all the steps to 'not playing'
-            event.error = false;
+        // Initialize the notes
+        for (var i = 0; i < 16; i++) {
+            this.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
+        }
+
+        var self = this;
+        self.sequence = new Tone.Part(function (time, event) {
+            event.hasError = false;
+
+            // Clear the playing class from all the steps
+            self.notes.map(function (x) {
+                x.isPlaying = false;
+                return x;
+            });
+            event.isPlaying = true;
 
             // Check for empty textbox
-            if (/\S/.test(event.note)) {
+            if (/\S/.test(event.value)) {
                 try {
-                    var t = Tone.Frequency(event.note);
+                    var t = Tone.Frequency(event.value);
                     synth.triggerAttackRelease(t, event.dur, time);
                 } catch (error) {
                     // Change the color of the textbox if it has invalid input
-                    event.error = true;
+                    event.hasError = true;
                 }
             }
-        }, this.notes);
+        }, self.notes);
 
-        this.sequence.loop = true;
+        self.sequence.loop = true;
         // this.sequence.loopStart = "0:0:0";
         // this.sequence.loopEnd = "0:3:1"
 
-        this.sequence.start(0);
+        self.sequence.start('0:0:1');
     },
 
 
@@ -1734,7 +1733,7 @@ var synth = new Tone.Synth().toMaster();
     data: function data() {
         return {
             sequence: {},
-            notes: [{ note: 'C4', time: '0:0:0', dur: '4n', error: false }, { note: 'C4', time: '0:0:1', dur: '4n', error: false }, { note: 'D4', time: '0:0:2', dur: '4n', error: false }, { note: 'E4', time: '0:0:3', dur: '4n', error: false }, { note: 'F4', time: '0:0:4', dur: '4n', error: false }, { note: 'G4', time: '0:0:5', dur: '4n', error: false }, { note: 'F4', time: '0:0:6', dur: '4n', error: false }, { note: 'E4', time: '0:0:7', dur: '4n', error: false }, { note: 'D4', time: '0:0:8', dur: '4n', error: false }, { note: 'D4', time: '0:0:9', dur: '4n', error: false }, { note: 'D3', time: '0:0:10', dur: '4n', error: false }, { note: 'D2', time: '0:0:11', dur: '4n', error: false }, { note: 'A2', time: '0:0:12', dur: '4n', error: false }, { note: 'B3', time: '0:0:13', dur: '4n', error: false }, { note: 'C4', time: '0:0:14', dur: '4n', error: false }, { note: 'D5', time: '0:0:15', dur: '4n', error: false }]
+            notes: []
         };
     }
 });
@@ -1864,7 +1863,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n.playing[data-v-cf9bd840] {\r\n    border-bottom: solid 1px #00AC60 !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    border: solid 1px #CCC;\r\n    border-bottom: solid 2px #CCC;\r\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\r\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\r\n    border-bottom: solid 2px #009900;\n}\r\n\r\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -19429,384 +19428,41 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[0].note),
-      expression: "notes[0].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[0].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[0].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[0].note = $event.target.value
+  return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
+    return _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (note.value),
+        expression: "note.value"
+      }],
+      staticClass: "step",
+      class: {
+        'has-error': note.hasError, 'is-playing': note.isPlaying
+      },
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (note.value)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          note.value = $event.target.value
+        }
       }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[1].note),
-      expression: "notes[1].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[1].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[1].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[1].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[2].note),
-      expression: "notes[2].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[0].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[2].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[2].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[3].note),
-      expression: "notes[3].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[3].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[3].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[3].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[4].note),
-      expression: "notes[4].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[4].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[4].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[4].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[5].note),
-      expression: "notes[5].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[5].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[5].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[5].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[6].note),
-      expression: "notes[6].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[6].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[6].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[6].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[7].note),
-      expression: "notes[7].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[7].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[7].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[7].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[8].note),
-      expression: "notes[8].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[8].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[8].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[8].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[9].note),
-      expression: "notes[9].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[9].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[9].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[9].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[10].note),
-      expression: "notes[10].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[10].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[10].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[10].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[11].note),
-      expression: "notes[11].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[11].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[11].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[11].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[12].note),
-      expression: "notes[12].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[12].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[12].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[12].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[13].note),
-      expression: "notes[13].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[13].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[13].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[13].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[14].note),
-      expression: "notes[14].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[14].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[14].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[14].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.notes[15].note),
-      expression: "notes[15].note"
-    }],
-    staticClass: "step",
-    class: {
-      'has-error': _vm.notes[15].error
-    },
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.notes[15].note)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.notes[15].note = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
+    })
+  })), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
-    staticClass: "step"
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-minus"
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
-    staticClass: "step"
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-plus"
   })])
