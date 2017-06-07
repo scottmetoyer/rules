@@ -7,8 +7,8 @@
         <span>
             <input type="text" class="step" v-for="note in notes" v-model="note.value" v-bind:class="{ 'has-error': note.hasError, 'is-playing': note.isPlaying }"/>
         </span>
-        <button class="sequence-button"><i class="fa fa-minus"></i></button>
-        <button class="sequence-button"><i class="fa fa-plus"></i></button>
+        <button class="sequence-button" @click="removeStep"><i class="fa fa-minus"></i></button>
+        <button class="sequence-button" @click="addStep"><i class="fa fa-plus"></i></button>
     </td>
     <td></td>
     </tr>
@@ -55,6 +55,15 @@ export default {
         },
 
     	methods: {
+            addStep: function() {
+                if (this.notes.length < 16) {
+                    this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
+                }
+            },
+
+            removeStep: function() {
+                this.notes.splice(-1, 1);
+            }
 	   	},
 
 		data: function() {

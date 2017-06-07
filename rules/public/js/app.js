@@ -1728,7 +1728,17 @@ var synth = new Tone.Synth().toMaster();
     },
 
 
-    methods: {},
+    methods: {
+        addStep: function addStep() {
+            if (this.notes.length < 16) {
+                this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
+            }
+        },
+
+        removeStep: function removeStep() {
+            this.notes.splice(-1, 1);
+        }
+    },
 
     data: function data() {
         return {
@@ -19453,20 +19463,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     })
-  })), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "sequence-button"
+  })), _vm._v(" "), _c('button', {
+    staticClass: "sequence-button",
+    on: {
+      "click": _vm.removeStep
+    }
   }, [_c('i', {
     staticClass: "fa fa-minus"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "sequence-button"
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "sequence-button",
+    on: {
+      "click": _vm.addStep
+    }
   }, [_c('i', {
     staticClass: "fa fa-plus"
-  })])
-}]}
+  })])]), _vm._v(" "), _c('td')])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
