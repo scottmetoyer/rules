@@ -5,7 +5,7 @@
     <td>Otto</td>
     <td>
         <span>
-            <input type="text" class="step" v-for="note in notes" v-model="note.value" v-bind:class="{ 'has-error': note.hasError, 'is-playing': note.isPlaying }"/>
+            <input type="text" class="step" v-for="note in sequence" v-model="note.value.value"/>
         </span>
         <button class="sequence-button" @click="removeStep"><i class="fa fa-minus"></i></button>
         <button class="sequence-button" @click="addStep"><i class="fa fa-plus"></i></button>
@@ -20,34 +20,36 @@ var synth = new Tone.Synth().toMaster();
 export default {
 		mounted() {
             // Initialize the notes
+            var notes = [];
             for(var i = 0; i < 16; i++) {
-                this.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
+                notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
             }
 
             var self = this;
             self.sequence = new Tone.Part(function(time, event){
-                event.hasError = false;
+                // event.hasError = false;
 
                 // Clear the playing class from all the steps
+                /*
                 self.notes.map(function(x) { 
                     x.isPlaying = false; 
                     return x;
                 });
                 event.isPlaying = true;
-
+                */
                 // Check for empty textbox
                 if (/\S/.test(event.value)) {
                     try {
-                        var t = Tone.Frequency(event.value);
-                        synth.triggerAttackRelease(t, event.dur, time);
+                        var t = Tone.Frequency(event.value.value);
+                        synth.triggerAttackRelease(t, event.value.dur, event.value.time);
                     } catch (error) {
                         // Change the color of the textbox if it has invalid input
-                        event.hasError = true;
+                        // event.hasError = true;
                     }
                 }
-            }, self.notes);
+            }, notes);
             
-            self.sequence.loop = true;
+            
             // this.sequence.loopStart = "0:0:0";
             // this.sequence.loopEnd = "0:3:1"
 
@@ -57,19 +59,21 @@ export default {
     	methods: {
             addStep: function() {
                 if (this.notes.length < 16) {
-                    this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
+                    var time = '0:0:' + this.notes.length;
+                    this.notes.push({ value: '', time: time, dur: '4n', hasError: false, isPlaying: false });
+                    // this.sequence.add(time, '');
                 }
             },
 
             removeStep: function() {
-                this.notes.splice(-1, 1);
+                var note = this.notes.pop();
+                // this.sequence.remove(note.time);
             }
 	   	},
 
 		data: function() {
 			return {
-                sequence: {},
-				notes: []
+                sequence: {}
 			}
 		}
     }
