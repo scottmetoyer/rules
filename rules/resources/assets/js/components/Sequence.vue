@@ -50,9 +50,6 @@ export default {
             }, self.notes);
             
             self.sequence.loop = true;
-            // this.sequence.loopStart = "0:0:0";
-            // this.sequence.loopEnd = "0:3:1"
-
             self.sequence.start('0:0:1');
         },
 
@@ -65,14 +62,19 @@ export default {
                     this.notes.push(note);
                     this.sequence.add(note);
 
-                    console.log(this.sequence);
+                    // Set the new loop point
+                    this.setLoop();
                 }
             },
             removeStep: function() {
                 var note = this.notes.pop();
                 this.sequence.remove(note.time);
 
-                console.log(this.sequence);
+                // Set the new loop point
+                this.setLoop();
+            },
+            setLoop: function() {
+                this.sequence.loopEnd = "0:0:" + (this.notes.length);
             }
 	   	},
 

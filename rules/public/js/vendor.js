@@ -1648,9 +1648,9 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory){
 	        var sixteenths = quarters % 1 * 4;
 	        quarters = Math.floor(quarters) % this._timeSignature();
 	        sixteenths = sixteenths.toString();
-	        if (sixteenths.length > 3) {
+	        //if (sixteenths.length > 3) {
 	            sixteenths = parseFloat(sixteenths).toFixed(3);
-	        }
+	        //}
 	        var progress = [
 	            measures,
 	            quarters,

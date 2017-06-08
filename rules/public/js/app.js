@@ -1723,9 +1723,6 @@ var synth = new Tone.Synth().toMaster();
         }, self.notes);
 
         self.sequence.loop = true;
-        // this.sequence.loopStart = "0:0:0";
-        // this.sequence.loopEnd = "0:3:1"
-
         self.sequence.start('0:0:1');
     },
 
@@ -1738,14 +1735,19 @@ var synth = new Tone.Synth().toMaster();
                 this.notes.push(note);
                 this.sequence.add(note);
 
-                console.log(this.sequence);
+                // Set the new loop point
+                this.setLoop();
             }
         },
         removeStep: function removeStep() {
             var note = this.notes.pop();
             this.sequence.remove(note.time);
 
-            console.log(this.sequence);
+            // Set the new loop point
+            this.setLoop();
+        },
+        setLoop: function setLoop() {
+            this.sequence.loopEnd = "0:0:" + this.notes.length;
         }
     },
 
@@ -1882,7 +1884,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(39)();
-exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n    border: solid 1px #CCC;\n    border-bottom: solid 2px #CCC;\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\n    border-bottom: solid 2px #009900;\n}\n\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    border: solid 1px #CCC;\r\n    border-bottom: solid 2px #CCC;\r\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\r\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\r\n    border-bottom: solid 2px #009900;\n}\r\n\r\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -19236,7 +19238,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19274,7 +19276,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19308,7 +19310,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19373,7 +19375,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "global-bpm"
     }
-  }), _vm._v(" BPM\n\t\t")])])
+  }), _vm._v(" BPM\r\n\t\t")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "border-left"
