@@ -54,7 +54,16 @@ export default {
             self.sequence.start('0:0:1');
         },
 
+    	
     	methods: {
+            addStep: function() {
+                if (this.notes.length < 16) {
+                    this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
+                }
+            },
+            removeStep: function() {
+                this.notes.splice(-1, 1);
+            }
 	   	},
 
 		data: function() {

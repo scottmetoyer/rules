@@ -1693,37 +1693,34 @@ var synth = new Tone.Synth().toMaster();
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         // Initialize the notes
-        var notes = [];
         for (var i = 0; i < 16; i++) {
-            notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
+            this.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
         }
 
         var self = this;
         self.sequence = new Tone.Part(function (time, event) {
-            // event.hasError = false;
+            event.hasError = false;
 
             // Clear the playing class from all the steps
-            /*
-            self.notes.map(function(x) { 
-                x.isPlaying = false; 
+            self.notes.map(function (x) {
+                x.isPlaying = false;
                 return x;
             });
             event.isPlaying = true;
-            */
+
             // Check for empty textbox
             if (/\S/.test(event.value)) {
-                console.log(event);
                 try {
-                    var t = Tone.Frequency(event.value.value);
-                    synth.triggerAttackRelease(t, '4n', event.value.time);
+                    var t = Tone.Frequency(event.value);
+                    synth.triggerAttackRelease(t, event.dur, time);
                 } catch (error) {
                     // Change the color of the textbox if it has invalid input
-                    // event.hasError = true;
+                    event.hasError = true;
                 }
             }
-        }, notes);
+        }, self.notes);
 
-        console.log(this.sequence._events);
+        self.sequence.loop = true;
         // this.sequence.loopStart = "0:0:0";
         // this.sequence.loopEnd = "0:3:1"
 
@@ -1733,21 +1730,19 @@ var synth = new Tone.Synth().toMaster();
 
     methods: {
         addStep: function addStep() {
-            if (this.sequence._events.length < 16) {
-                var time = '0:0:' + this.sequence._events.length;
-                this.sequence.add(time, '');
+            if (this.notes.length < 16) {
+                this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
             }
         },
-
         removeStep: function removeStep() {
-            console.log(this.sequence._events.length);
-            this.sequence.remove('0:0:' + (this.sequence._events.length - 1));
+            this.notes.splice(-1, 1);
         }
     },
 
     data: function data() {
         return {
-            sequence: {}
+            sequence: {},
+            notes: []
         };
     }
 });
@@ -19442,44 +19437,45 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.sequence._events), function(note) {
+  return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
     return _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
-        value: (note.value.value),
-        expression: "note.value.value"
+        value: (note.value),
+        expression: "note.value"
       }],
       staticClass: "step",
+      class: {
+        'has-error': note.hasError, 'is-playing': note.isPlaying
+      },
       attrs: {
         "type": "text"
       },
       domProps: {
-        "value": (note.value.value)
+        "value": (note.value)
       },
       on: {
         "input": function($event) {
           if ($event.target.composing) { return; }
-          note.value.value = $event.target.value
+          note.value = $event.target.value
         }
       }
     })
-  })), _vm._v(" "), _c('button', {
-    staticClass: "sequence-button",
-    on: {
-      "click": _vm.removeStep
-    }
+  })), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-minus"
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "sequence-button",
-    on: {
-      "click": _vm.addStep
-    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "sequence-button"
   }, [_c('i', {
     staticClass: "fa fa-plus"
-  })])]), _vm._v(" "), _c('td')])
-},staticRenderFns: []}
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
