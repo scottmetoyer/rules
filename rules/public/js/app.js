@@ -1687,17 +1687,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var synth = new Tone.Synth().toMaster();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        var self = this;
+
         // Initialize the notes
         for (var i = 0; i < 16; i++) {
-            this.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
+            self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
         }
 
-        var self = this;
         self.sequence = new Tone.Part(function (time, event) {
             event.hasError = false;
 
@@ -1731,11 +1733,19 @@ var synth = new Tone.Synth().toMaster();
     methods: {
         addStep: function addStep() {
             if (this.notes.length < 16) {
-                this.notes.push({ value: '', time: '0:0:' + this.notes.length, dur: '4n', hasError: false, isPlaying: false });
+                var time = '0:0:' + this.notes.length;
+                var note = { value: '', time: time, dur: '4n', hasError: false, isPlaying: false };
+                this.notes.push(note);
+                this.sequence.add(note);
+
+                console.log(this.sequence);
             }
         },
         removeStep: function removeStep() {
-            this.notes.splice(-1, 1);
+            var note = this.notes.pop();
+            this.sequence.remove(note.time);
+
+            console.log(this.sequence);
         }
     },
 
@@ -19462,20 +19472,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     })
-  })), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('td')])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "sequence-button"
+  })), _vm._v(" "), _c('button', {
+    staticClass: "sequence-button",
+    on: {
+      "click": _vm.removeStep
+    }
   }, [_c('i', {
     staticClass: "fa fa-minus"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "sequence-button"
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "sequence-button",
+    on: {
+      "click": _vm.addStep
+    }
   }, [_c('i', {
     staticClass: "fa fa-plus"
-  })])
-}]}
+  })])]), _vm._v(" "), _c('td')])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
