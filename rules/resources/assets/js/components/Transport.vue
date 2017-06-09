@@ -6,9 +6,11 @@
 		</a>
 	</li>
 	<li>
-		<a href="#">
-			<span id="global-bpm"></span>&nbsp;BPM
-		</a>		
+		<form class="navbar-form">
+			<div class="form-group">
+				<input type="text" style="width: 100px;" v-model="transport.bpm.value"/>&nbsp;BPM
+			</div>	
+		</form>
 	</li>
 	<li class="border-left">
 		<a href="#" id="transport-back-button"><i class="fa fa-step-backward"></i></a>
@@ -31,6 +33,7 @@
 <script>
 	export default {
 		mounted() {
+			console.log(this.transport.bpm);
         },
 
     	methods: {
