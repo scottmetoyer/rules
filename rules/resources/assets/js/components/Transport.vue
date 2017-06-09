@@ -8,7 +8,7 @@
 	<li>
 		<form class="navbar-form">
 			<div class="form-group">
-				<input type="text" style="width: 100px;" v-model="transport.bpm.value"/>&nbsp;BPM
+				<input type="text" class="global-bpm" @keyup.enter="updateBpm" v-model="bpm" v-on:blur="updateBpm" number/>&nbsp;BPM
 			</div>	
 		</form>
 	</li>
@@ -33,7 +33,7 @@
 <script>
 	export default {
 		mounted() {
-			console.log(this.transport.bpm);
+			console.log(this.transport.bpm.value);
         },
 
     	methods: {
@@ -46,13 +46,36 @@
 			back() {
 		   	},
 		   	forward() {
-		   	}
+		   	},
+			updateBpm() {
+				var value = Number(event.target.value);
+
+				if (value > 500) {
+					this.bpm = 500;
+				}
+				else if (value < 1 || Number.isNaN(value)) {
+					this.bpm = 1;
+				}
+
+				this.transport.bpm.value = this.bpm;
+				return false;
+			}
 	   	},
 
 		data: function() {
 			return {
-				transport: Tone.Transport
+				transport: Tone.Transport,
+				bpm: 120
 			}
 		}
     }
 </script>
+
+<style>
+.global-bpm {
+	width: 60px; 
+	color: #000;
+	text-align: right;
+	padding: 4px;
+}
+</style>
