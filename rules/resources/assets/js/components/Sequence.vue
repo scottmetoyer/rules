@@ -16,12 +16,11 @@
 </template>
 
 <script>
-var synth = new Tone.Synth().toMaster();
-
 export default {
 		mounted() {
             var self = this;
-
+            var synth = new Tone.Synth().toMaster();
+            
             // Initialize the notes
             for(var i = 0; i < 16; i++) {
                 self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });

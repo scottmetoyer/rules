@@ -17,15 +17,17 @@
                         <th>Name</th>
                         <th>Instrument</th>
                         <th>Pattern</th>
-                        <th>Function</th>
+                        <th>Func</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="sequence"></tr>
+                    <tr is="sequence" v-for="sequence in sequences"></tr>
                 </tbody>
             </table>
             <div class="table-footer">
-                Footer
+                <div class="pull-right">
+                    <button type="button" class="btn btn-x btn-outline btn-outline-colorless" @click="addSequence">Add</button>
+                </div>
             </div>
         </div>
     </div>

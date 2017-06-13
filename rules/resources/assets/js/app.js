@@ -40,11 +40,18 @@ const app = new Vue({
     el: '#app',
     data: { 
             message: 'Hello World' ,
-            count: 0
+            count: 0,
+			sequences: [
+				{ id: 0 },
+				{ id: 1 },
+				{ id: 3 }]
         },
     methods: {
         updatecount: function() {
             this.count += 1;
-        }
+        },
+		addSequence: function() {
+			
+		}
     }
 });

@@ -1050,7 +1050,8 @@ var app = new Vue({
     el: '#app',
     data: {
         message: 'Hello World',
-        count: 0
+        count: 0,
+        sequences: [{ id: 0 }, { id: 1 }, { id: 3 }]
     },
     methods: {
         updatecount: function updatecount() {
@@ -1966,11 +1967,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var synth = new Tone.Synth().toMaster();
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var self = this;
+        var synth = new Tone.Synth().toMaster();
 
         // Initialize the notes
         for (var i = 0; i < 16; i++) {
