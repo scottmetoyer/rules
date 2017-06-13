@@ -8,11 +8,41 @@
 require('./bootstrap');
 window.Vue = require('vue');
 
+// Set up the router
+var VueRouter = require('vue-router/dist/vue-router.js');
+Vue.use(VueRouter);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
+// Initialize Vue components
+Vue.component('transport', require('./components/Transport.vue'));
+Vue.component('sequence', require('./components/Sequence.vue'));
+
+const Seq = Vue.component('SequencePage', require('./components/SequencePage.vue'));
+const Synth = Vue.component('SynthPage', require('./components/SynthPage.vue'));
+const FX = Vue.component('EffectsPage', require('./components/EffectsPage.vue'));
+const Mix = Vue.component('MixPage', require('./components/MixPage.vue'));
+const Config = Vue.component('ConfigPage', require('./components/ConfigPage.vue'));
+
+var router = new VueRouter({
+	routes: [
+		{ path: '/seq', component: Seq },
+		{ path: '/synth', component: Synth },
+		{ path: '/fx', component: FX },
+		{ path: '/mix', component: Mix },
+		{ path: '/config', component: Config },
+		{ path: '/', redirect: '/seq' },
+	],
+});
+const app = new Vue({
+  el: '#app',
+  router
+});
 
 // Override the Tone.js toBarsBeatsSixteenths method to clean up the display
 Tone.Time.prototype.toBarsBeatsSixteenths = function () {
@@ -30,28 +60,3 @@ Tone.Time.prototype.toBarsBeatsSixteenths = function () {
 	        ];
 	        return progress.join(':');
 	    };
-
-// Initialize Vue
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('transport', require('./components/Transport.vue'));
-Vue.component('sequence', require('./components/Sequence.vue'));
-
-const app = new Vue({
-    el: '#app',
-    data: { 
-            message: 'Hello World' ,
-            count: 0,
-			sequences: [
-				{ id: 0 },
-				{ id: 1 },
-				{ id: 3 }]
-        },
-    methods: {
-        updatecount: function() {
-            this.count += 1;
-        },
-		addSequence: function() {
-			
-		}
-    }
-});

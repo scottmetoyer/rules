@@ -20,7 +20,7 @@ export default {
 		mounted() {
             var self = this;
             var synth = new Tone.Synth().toMaster();
-            
+
             // Initialize the notes
             for(var i = 0; i < 16; i++) {
                 self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
@@ -52,7 +52,6 @@ export default {
             self.sequence.start('0:0:1');
         },
 
-    	
     	methods: {
             addStep: function() {
                 if (this.notes.length < 16) {

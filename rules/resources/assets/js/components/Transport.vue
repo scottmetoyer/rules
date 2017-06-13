@@ -6,26 +6,26 @@
 		</a>
 	</li>
 	<li>
-		<form class="navbar-form">
+		<div class="navbar-form">
 			<div class="form-group">
 				<input type="text" class="global-bpm" @keyup.enter="updateBpm" v-model="bpm" v-on:blur="updateBpm" number/>&nbsp;BPM
 			</div>	
-		</form>
+		</div>
 	</li>
 	<li class="border-left">
-		<a href="#" id="transport-back-button"><i class="fa fa-step-backward"></i></a>
+		<a id="transport-back-button"><i class="fa fa-step-backward"></i></a>
 	</li>
 	<li>
-		<a href="#" id="transport-stop-button" @click="stop"><i class="fa fa-stop"></i></a>
+		<a id="transport-stop-button" @click="stop"><i class="fa fa-stop"></i></a>
 	</li>
 	<li>
-		<a href="#" id="transport-play-button" @click="play"><i class="fa fa-play"></i></a>
+		<a id="transport-play-button" @click="play"><i class="fa fa-play"></i></a>
 	</li>
 	<li class="border-right">
-		<a href="#" id="transport-forward-button"><i class="fa fa-step-forward"></i></a>
+		<a id="transport-forward-button"><i class="fa fa-step-forward"></i></a>
 	</li>
 	<li>
-		<a href="#"><i class="fa fa-cog"></i>&nbsp;&nbsp;Config</a>
+		<router-link to="/config"><i class="px-nav-icon ion-gear-b"></i><span class="px-nav-label">Config</span></router-link>
 	</li>
 </ul>
 </template>

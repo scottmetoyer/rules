@@ -20,6 +20,7 @@
   },
   "optionalDependencies": {},
   "dependencies": {
-    "tone": "^0.10.0"
+    "tone": "^0.10.0",
+    "vue-router": "^2.5.3"
   }
 }

@@ -1,0 +1,51 @@
+<template>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-light">
+            <div class="table-header">
+                <div class="table-caption">
+                    Synth
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Base</th>
+                        <th>Params</th>
+                        <th>Func</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr is="synth" v-for="synth in synths"></tr>
+                </tbody>
+            </table>
+            <div class="table-footer">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="addSynth"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+export default {
+		mounted() {
+        },
+
+    	methods: {
+             addSynth: function() {
+                console.log('Add synth');
+		    },
+	   	},
+
+		data: function() {
+			return {
+                synths: [{id: 1}, {id: 2}, {id: 3}]
+			}
+		}
+    }
+</script>
