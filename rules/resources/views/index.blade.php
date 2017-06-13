@@ -26,7 +26,7 @@
             </table>
             <div class="table-footer">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-x btn-outline btn-outline-colorless" @click="addSequence">Add</button>
+                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="addSequence">Add</button>
                 </div>
             </div>
         </div>
