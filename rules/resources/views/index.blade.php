@@ -21,11 +21,15 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr is="sequence"></tr>
+                    
                 </tbody>
             </table>
             <div class="table-footer">
-                Footer
+                <div class="pull-right">
+                   <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="addSequence">Add</button>
+                </div>
             </div>
         </div>
     </div>
@@ -34,5 +38,7 @@
 @endsection
 
 @section('script')
+<script>
 
+</script>
 @endsection

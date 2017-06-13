@@ -1030,15 +1030,15 @@ window.Vue = __webpack_require__(7);
 
 // Override the Tone.js toBarsBeatsSixteenths method to clean up the display
 Tone.Time.prototype.toBarsBeatsSixteenths = function () {
-    var quarterTime = this._beatsToUnits(1);
-    var quarters = this.toSeconds() / quarterTime;
-    var measures = Math.floor(quarters / this._timeSignature());
-    var sixteenths = quarters % 1 * 4;
-    quarters = Math.floor(quarters) % this._timeSignature();
-    sixteenths = sixteenths.toString();
-    sixteenths = parseFloat(sixteenths).toFixed(3);
-    var progress = [measures, quarters, sixteenths];
-    return progress.join(':');
+  var quarterTime = this._beatsToUnits(1);
+  var quarters = this.toSeconds() / quarterTime;
+  var measures = Math.floor(quarters / this._timeSignature());
+  var sixteenths = quarters % 1 * 4;
+  quarters = Math.floor(quarters) % this._timeSignature();
+  sixteenths = sixteenths.toString();
+  sixteenths = parseFloat(sixteenths).toFixed(3);
+  var progress = [measures, quarters, sixteenths];
+  return progress.join(':');
 };
 
 // Initialize Vue
@@ -1047,16 +1047,19 @@ Vue.component('transport', __webpack_require__(46));
 Vue.component('sequence', __webpack_require__(45));
 
 var app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello World',
-        count: 0
+  el: '#app',
+  data: {
+    message: 'Hello World',
+    count: 0
+  },
+  methods: {
+    updatecount: function updatecount() {
+      this.count += 1;
     },
-    methods: {
-        updatecount: function updatecount() {
-            this.count += 1;
-        }
+    addSequence: function addSequence() {
+      alert('Added');
     }
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -2178,14 +2181,14 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)();
-exports.push([module.i, "\n.global-bpm {\r\n\twidth: 60px; \r\n\tcolor: #000;\r\n\ttext-align: right;\r\n\tpadding: 4px;\n}\r\n", ""]);
+exports.push([module.i, "\n.global-bpm {\n\twidth: 60px; \n\tcolor: #000;\n\ttext-align: right;\n\tpadding: 4px;\n}\n", ""]);
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)();
-exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    border: solid 1px #CCC;\r\n    border-bottom: solid 2px #CCC;\r\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\r\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\r\n    border-bottom: solid 2px #009900;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n    border: solid 1px #CCC;\n    border-bottom: solid 2px #CCC;\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\n    border-bottom: solid 2px #009900;\n}\n\n", ""]);
 
 /***/ }),
 /* 42 */
@@ -19483,7 +19486,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19521,7 +19524,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19559,7 +19562,7 @@ var Component = __webpack_require__(4)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19624,7 +19627,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.bpm = $event.target.value
       }
     }
-  }), _vm._v(" BPM\r\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }), _vm._v(" BPM\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#",
       "id": "transport-stop-button"
