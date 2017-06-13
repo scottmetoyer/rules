@@ -1030,15 +1030,15 @@ window.Vue = __webpack_require__(7);
 
 // Override the Tone.js toBarsBeatsSixteenths method to clean up the display
 Tone.Time.prototype.toBarsBeatsSixteenths = function () {
-    var quarterTime = this._beatsToUnits(1);
-    var quarters = this.toSeconds() / quarterTime;
-    var measures = Math.floor(quarters / this._timeSignature());
-    var sixteenths = quarters % 1 * 4;
-    quarters = Math.floor(quarters) % this._timeSignature();
-    sixteenths = sixteenths.toString();
-    sixteenths = parseFloat(sixteenths).toFixed(3);
-    var progress = [measures, quarters, sixteenths];
-    return progress.join(':');
+	var quarterTime = this._beatsToUnits(1);
+	var quarters = this.toSeconds() / quarterTime;
+	var measures = Math.floor(quarters / this._timeSignature());
+	var sixteenths = quarters % 1 * 4;
+	quarters = Math.floor(quarters) % this._timeSignature();
+	sixteenths = sixteenths.toString();
+	sixteenths = parseFloat(sixteenths).toFixed(3);
+	var progress = [measures, quarters, sixteenths];
+	return progress.join(':');
 };
 
 // Initialize Vue
@@ -1047,17 +1047,18 @@ Vue.component('transport', __webpack_require__(46));
 Vue.component('sequence', __webpack_require__(45));
 
 var app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello World',
-        count: 0,
-        sequences: [{ id: 0 }, { id: 1 }, { id: 3 }]
-    },
-    methods: {
-        updatecount: function updatecount() {
-            this.count += 1;
-        }
-    }
+	el: '#app',
+	data: {
+		message: 'Hello World',
+		count: 0,
+		sequences: [{ id: 0 }, { id: 1 }, { id: 3 }]
+	},
+	methods: {
+		updatecount: function updatecount() {
+			this.count += 1;
+		},
+		addSequence: function addSequence() {}
+	}
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
