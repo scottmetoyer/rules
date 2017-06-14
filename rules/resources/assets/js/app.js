@@ -22,12 +22,13 @@ Vue.use(VueRouter);
 // Initialize Vue components
 Vue.component('transport', require('./components/Transport.vue'));
 Vue.component('sequence', require('./components/Sequence.vue'));
+Vue.component('synth', require('./components/Synth.vue'));
 
-const Seq = Vue.component('SequencePage', require('./components/SequencePage.vue'));
-const Synth = Vue.component('SynthPage', require('./components/SynthPage.vue'));
-const FX = Vue.component('EffectsPage', require('./components/EffectsPage.vue'));
-const Mix = Vue.component('MixPage', require('./components/MixPage.vue'));
-const Config = Vue.component('ConfigPage', require('./components/ConfigPage.vue'));
+const Seq = Vue.component('SequencePage', require('./components/pages/Seq.vue'));
+const Synth = Vue.component('SynthPage', require('./components/pages/Synth.vue'));
+const FX = Vue.component('EffectsPage', require('./components/pages/FX.vue'));
+const Mix = Vue.component('MixPage', require('./components/pages/Mix.vue'));
+const Config = Vue.component('ConfigPage', require('./components/pages/Config.vue'));
 
 var router = new VueRouter({
 	routes: [

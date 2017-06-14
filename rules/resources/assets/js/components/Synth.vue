@@ -1,10 +1,16 @@
 <template>
 <tr>
-    <td>1</td>
-    <td>Blasto</td>
-    <td>Masto</td>
-    <td></td>
-    <td></td>
+    <td>{{ synth.id }}</td>
+    <td>
+        {{ synth.name }}
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+
+    </td>
 </tr>
 </template>
 
@@ -15,7 +21,7 @@ export default {
 
     	methods: {
 	   	},
-
+        props: ['synth'],
 		data: function() {
 			return {
 			}

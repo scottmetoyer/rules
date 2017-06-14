@@ -18,7 +18,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="synth" v-for="synth in synths"></tr>
+                    <tr is="synth" 
+                        v-for="(synth, index) in synths"
+                        v-bind:synth="synth"
+                        v-bind:index="index"
+                        v-bind:key="synth.id"
+                        v-on:remove="synths.splice(index, 1)"></tr>
                 </tbody>
             </table>
             <div class="table-footer">
@@ -44,7 +49,10 @@ export default {
 
 		data: function() {
 			return {
-                synths: [{id: 1}, {id: 2}, {id: 3}]
+                synths: [
+                    {id: 1, name: 'synth one' }, 
+                    {id: 2, name: 'synth two'}, 
+                    {id: 3, name: 'synth three'}]
 			}
 		}
     }
