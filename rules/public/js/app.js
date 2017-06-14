@@ -2003,6 +2003,10 @@ module.exports = function spread(callback) {
             this.part.loopEnd = "0:0:" + this.notes.length;
         },
         remove: function remove() {
+            // Stop playing and remove the part
+            this.part.removeAll();
+            this.part.dispose();
+
             this.$emit('remove');
         }
     },

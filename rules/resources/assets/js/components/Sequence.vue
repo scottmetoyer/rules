@@ -76,6 +76,10 @@ export default {
                 this.part.loopEnd = "0:0:" + (this.notes.length);
             },
             remove: function() {
+                // Stop playing and remove the part
+                this.part.removeAll();
+                this.part.dispose();
+
                 this.$emit('remove');
             }
 	   	},
