@@ -10,7 +10,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Instrument</th>
                         <th>Params</th>
@@ -43,7 +42,7 @@ export default {
 
     	methods: {
             add: function() {
-                var synth = { name: 'new synth', instrument: 'Monophonic' };
+                var synth = { id: this.shared_state.uniqueId(), name: 'new synth', instrument: 'Monophonic' };
                 this.shared_state.synths.push(synth);
 		    },
             remove: function(index) {

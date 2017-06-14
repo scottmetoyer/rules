@@ -1,6 +1,5 @@
 <template>
 <tr>
-    <td>{{ this._uid }}</td>
     <td><input type="text" class="parameter" v-model="synth.name"/></td>
     <td>
         <select class="parameter" v-model="synth.instrument">

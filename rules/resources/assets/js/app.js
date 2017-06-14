@@ -15,7 +15,18 @@ Vue.use(VueRouter);
 
 // Set up shared state global object
 window.shared_state = {
-	synths: []
+	synths: [],
+	uniqueId: function() {
+		const alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		const length = 8;
+		var output = '';
+
+		for (var i = 0; i < length; i++) {
+			output += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+		}
+
+ 		return output;
+	}
 };
 
 /**

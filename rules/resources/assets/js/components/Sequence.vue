@@ -3,8 +3,8 @@
     <td>{{ this._uid }}</td>
     <td>{{ sequence.name }}</td>
     <td>
-        <select v-model="sequence.synth">
-            <option v-for="s in shared_state.synths">{{ s.name }}</option>
+        <select class="parameter" v-model="sequence.synth">
+            <option v-for="s in shared_state.synths" v-bind:value="s.id">{{ s.name }}</option>
         </select>
     </td>
     <td>
