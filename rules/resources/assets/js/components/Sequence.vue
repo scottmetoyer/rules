@@ -1,8 +1,8 @@
 <template>
 <tr>
-    <td>1</td>
-    <td>Mark</td>
-    <td>Otto</td>
+    <td>{{ this._uid }}</td>
+    <td>{{ sequence.name }}</td>
+    <td></td>
     <td>
         <span>
             <input type="text" class="step" v-for="note in notes" v-model="note.value" v-bind:class="{ 'has-error': note.hasError, 'is-playing': note.isPlaying }"/>

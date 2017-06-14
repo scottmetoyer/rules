@@ -22,8 +22,8 @@
                         v-for="(sequence, index) in sequences"
                         v-bind:sequence="sequence"
                         v-bind:index="index"
-                        v-bind:key="sequence.id"
-                        v-on:remove="sequences.splice(index, 1)"></tr>
+                        v-bind:key="sequence"
+                        v-on:remove="remove(index)"></tr>
                 </tbody>
             </table>
             <div class="table-footer">
@@ -43,14 +43,17 @@ export default {
 
     	methods: {
             add: function() {
-                var sequence = { id: 0, name: 'sequence' };
+                var sequence = { name: 'new sequence' };
                 this.sequences.push(sequence);
 		    },
+            remove: function(index) {
+                this.sequences.splice(index, 1);
+            }
 	   	},
 
 		data: function() {
 			return {
-                sequences: [{id: 1, name: 'seq 01'}, {id: 2, name: 'seq 02'}, {id: 3, name: 'seq 03'}]
+                sequences: [{name: 'seq 1'}, {name: 'seq 2'}, {name: 'seq 3'}]
 			}
 		}
     }

@@ -22,8 +22,8 @@
                         v-for="(synth, index) in synths"
                         v-bind:synth="synth"
                         v-bind:index="index"
-                        v-bind:key="synth.id"
-                        v-on:remove="synths.splice(index, 1)"></tr>
+                        v-bind:key="synth"
+                        v-on:remove="remove(index)"></tr>
                 </tbody>
             </table>
             <div class="table-footer">
@@ -43,17 +43,20 @@ export default {
 
     	methods: {
             add: function() {
-                var synth = { id: 0, name: 'synth', type: '' };
+                var synth = { name: 'new synth', type: '' };
                 this.synths.push(synth);
 		    },
+            remove: function(index) {
+                this.synths.splice(index, 1);
+            }
 	   	},
 
 		data: function() {
 			return {
                 synths: [
-                    {id: 1, name: 'synth one' }, 
-                    {id: 2, name: 'synth two'}, 
-                    {id: 3, name: 'synth three'}]
+                    { name: 'synth one' }, 
+                    { name: 'synth two' }, 
+                    { name: 'synth three' }]
 			}
 		}
     }

@@ -2036,8 +2036,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
@@ -2176,21 +2174,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {},
+    mounted: function mounted() {},
 
 
-  methods: {
-    add: function add() {
-      var sequence = { id: 0, name: 'sequence' };
-      this.sequences.push(sequence);
+    methods: {
+        add: function add() {
+            var sequence = { name: 'new sequence' };
+            this.sequences.push(sequence);
+        },
+        remove: function remove(index) {
+            this.sequences.splice(index, 1);
+        }
+    },
+
+    data: function data() {
+        return {
+            sequences: [{ name: 'seq 1' }, { name: 'seq 2' }, { name: 'seq 3' }]
+        };
     }
-  },
-
-  data: function data() {
-    return {
-      sequences: [{ id: 1, name: 'seq 01' }, { id: 2, name: 'seq 02' }, { id: 3, name: 'seq 03' }]
-    };
-  }
 });
 
 /***/ }),
@@ -2244,14 +2245,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add() {
-            var synth = { id: 0, name: 'synth', type: '' };
+            var synth = { name: 'new synth', type: '' };
             this.synths.push(synth);
+        },
+        remove: function remove(index) {
+            this.synths.splice(index, 1);
         }
     },
 
     data: function data() {
         return {
-            synths: [{ id: 1, name: 'synth one' }, { id: 2, name: 'synth two' }, { id: 3, name: 'synth three' }]
+            synths: [{ name: 'synth one' }, { name: 'synth two' }, { name: 'synth three' }]
         };
     }
 });
@@ -19889,7 +19893,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table table-bordered"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.synths), function(synth, index) {
     return _c("synth", {
-      key: synth.id,
+      key: synth,
       tag: "tr",
       attrs: {
         "synth": synth,
@@ -19897,7 +19901,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "remove": function($event) {
-          _vm.synths.splice(index, 1)
+          _vm.remove(index)
         }
       }
     })
@@ -20039,7 +20043,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(_vm.synth.id))]), _vm._v(" "), _c('td', [_vm._v("\r\n        " + _vm._s(_vm.synth.name) + "\r\n    ")]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('button', {
+  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.synth.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('button', {
     staticClass: "btn btn-outline btn-xs",
     attrs: {
       "type": "button"
@@ -20087,7 +20091,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table table-bordered"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.sequences), function(sequence, index) {
     return _c("sequence", {
-      key: sequence.id,
+      key: sequence,
       tag: "tr",
       attrs: {
         "sequence": sequence,
@@ -20095,7 +20099,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "remove": function($event) {
-          _vm.sequences.splice(index, 1)
+          _vm.remove(index)
         }
       }
     })
@@ -20136,7 +20140,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Mark")]), _vm._v(" "), _c('td', [_vm._v("Otto")]), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
+  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.sequence.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
     return _c('input', {
       directives: [{
         name: "model",

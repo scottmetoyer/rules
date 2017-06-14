@@ -1,9 +1,7 @@
 <template>
 <tr>
-    <td>{{ synth.id }}</td>
-    <td>
-        {{ synth.name }}
-    </td>
+    <td>{{ this._uid }}</td>
+    <td>{{ synth.name }}</td>
     <td>
     </td>
     <td>
