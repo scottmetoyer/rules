@@ -1961,7 +1961,6 @@ module.exports = function spread(callback) {
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -2202,7 +2201,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {},
@@ -2210,7 +2208,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add() {
-            var sequence = { name: 'new sequence' };
+            var sequence = { id: this.shared_state.uniqueId(), name: 'new sequence' };
             this.sequences.push(sequence);
         },
         remove: function remove(index) {
@@ -2220,7 +2218,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            sequences: [{ name: 'seq 1' }, { name: 'seq 2' }, { name: 'seq 3' }]
+            sequences: [],
+            shared_state: window.shared_state
         };
     }
 });
@@ -20196,7 +20195,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-caption"
   }, [_vm._v("\r\n                    Seq\r\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Synth")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Synth")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -20211,7 +20210,27 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.sequence.name))]), _vm._v(" "), _c('td', [_c('select', {
+  return _c('tr', [_c('td', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.sequence.name),
+      expression: "sequence.name"
+    }],
+    staticClass: "parameter",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.sequence.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.sequence.name = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('td', [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",

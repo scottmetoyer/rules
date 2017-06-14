@@ -10,7 +10,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Synth</th>
                         <th>Pattern</th>
@@ -43,7 +42,7 @@ export default {
 
     	methods: {
             add: function() {
-                var sequence = { name: 'new sequence' };
+                var sequence = { id: this.shared_state.uniqueId(), name: 'new sequence' };
                 this.sequences.push(sequence);
 		    },
             remove: function(index) {
@@ -53,7 +52,8 @@ export default {
 
 		data: function() {
 			return {
-                sequences: [{name: 'seq 1'}, {name: 'seq 2'}, {name: 'seq 3'}]
+                sequences: [],
+                shared_state: window.shared_state
 			}
 		}
     }

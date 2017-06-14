@@ -1,7 +1,6 @@
 <template>
 <tr>
-    <td>{{ this._uid }}</td>
-    <td>{{ sequence.name }}</td>
+    <td><input type="text" class="parameter" v-model="sequence.name"/></td>
     <td>
         <select class="parameter" v-model="sequence.synth">
             <option v-for="s in shared_state.synths" v-bind:value="s.id">{{ s.name }}</option>
