@@ -11,6 +11,7 @@
         <button class="sequence-button" @click="addStep"><i class="fa fa-plus"></i></button>
     </td>
     <td>
+        <button type="button" class="btn btn-outline btn-xs" @click="remove">DEL</button>
     </td>
     </tr>
 </template>
@@ -26,7 +27,7 @@ export default {
                 self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
             }
 
-            self.sequence = new Tone.Part(function(time, event){
+            self.part = new Tone.Part(function(time, event){
                 event.hasError = false;
 
                 // Clear the playing class from all the steps
@@ -48,8 +49,8 @@ export default {
                 }
             }, self.notes);
             
-            self.sequence.loop = true;
-            self.sequence.start('0:0:1');
+            self.part.loop = true;
+            self.part.start('0:0:1');
         },
 
     	methods: {
@@ -58,7 +59,7 @@ export default {
                     var time = '0:0:' + this.notes.length;
                     var note = { value: '', time: time, dur: '4n', hasError: false, isPlaying: false };
                     this.notes.push(note);
-                    this.sequence.add(note);
+                    this.part.add(note);
 
                     // Set the new loop point
                     this.setLoop();
@@ -66,19 +67,22 @@ export default {
             },
             removeStep: function() {
                 var note = this.notes.pop();
-                this.sequence.remove(note.time);
+                this.part.remove(note.time);
 
                 // Set the new loop point
                 this.setLoop();
             },
             setLoop: function() {
-                this.sequence.loopEnd = "0:0:" + (this.notes.length);
+                this.part.loopEnd = "0:0:" + (this.notes.length);
+            },
+            remove: function() {
+                this.$emit('remove');
             }
 	   	},
-
+        props: ['sequence', 'index'],
 		data: function() {
 			return {
-                sequence: {},
+                part: {},
 				notes: []
 			}
 		}

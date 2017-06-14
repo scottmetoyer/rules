@@ -9,7 +9,7 @@
     <td>
     </td>
     <td>
-
+        <button type="button" class="btn btn-outline btn-xs" @click="remove">DEL</button>
     </td>
 </tr>
 </template>
@@ -18,10 +18,12 @@
 export default {
 		mounted() {
         },
-
     	methods: {
+            remove: function() {
+                this.$emit('remove');
+            }
 	   	},
-        props: ['synth'],
+        props: ['synth', 'index'],
 		data: function() {
 			return {
 			}

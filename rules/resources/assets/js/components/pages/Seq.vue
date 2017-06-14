@@ -18,12 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="sequence" v-for="sequence in sequences"></tr>
+                    <tr is="sequence" 
+                        v-for="(sequence, index) in sequences"
+                        v-bind:sequence="sequence"
+                        v-bind:index="index"
+                        v-bind:key="sequence.id"
+                        v-on:remove="sequences.splice(index, 1)"></tr>
                 </tbody>
             </table>
             <div class="table-footer">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="addSequence"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="add"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -37,14 +42,15 @@ export default {
         },
 
     	methods: {
-            addSequence: function() {
-                console.log('Add sequence');
+            add: function() {
+                var sequence = { id: 0, name: 'sequence' };
+                this.sequences.push(sequence);
 		    },
 	   	},
 
 		data: function() {
 			return {
-                sequences: [{id: 1}, {id: 2}, {id: 3}]
+                sequences: [{id: 1, name: 'seq 01'}, {id: 2, name: 'seq 02'}, {id: 3, name: 'seq 03'}]
 			}
 		}
     }

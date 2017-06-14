@@ -12,7 +12,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Base</th>
+                        <th>Type</th>
                         <th>Params</th>
                         <th>Func</th>
                     </tr>
@@ -28,7 +28,7 @@
             </table>
             <div class="table-footer">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="addSynth"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-xs btn-outline btn-outline-colorless" @click="add"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -42,8 +42,9 @@ export default {
         },
 
     	methods: {
-             addSynth: function() {
-                console.log('Add synth');
+            add: function() {
+                var synth = { id: 0, name: 'synth', type: '' };
+                this.synths.push(synth);
 		    },
 	   	},
 

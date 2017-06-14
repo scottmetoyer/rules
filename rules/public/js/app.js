@@ -1941,6 +1941,7 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -1952,7 +1953,7 @@ module.exports = function spread(callback) {
             self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
         }
 
-        self.sequence = new Tone.Part(function (time, event) {
+        self.part = new Tone.Part(function (time, event) {
             event.hasError = false;
 
             // Clear the playing class from all the steps
@@ -1974,8 +1975,8 @@ module.exports = function spread(callback) {
             }
         }, self.notes);
 
-        self.sequence.loop = true;
-        self.sequence.start('0:0:1');
+        self.part.loop = true;
+        self.part.start('0:0:1');
     },
 
 
@@ -1985,7 +1986,7 @@ module.exports = function spread(callback) {
                 var time = '0:0:' + this.notes.length;
                 var note = { value: '', time: time, dur: '4n', hasError: false, isPlaying: false };
                 this.notes.push(note);
-                this.sequence.add(note);
+                this.part.add(note);
 
                 // Set the new loop point
                 this.setLoop();
@@ -1993,19 +1994,22 @@ module.exports = function spread(callback) {
         },
         removeStep: function removeStep() {
             var note = this.notes.pop();
-            this.sequence.remove(note.time);
+            this.part.remove(note.time);
 
             // Set the new loop point
             this.setLoop();
         },
         setLoop: function setLoop() {
-            this.sequence.loopEnd = "0:0:" + this.notes.length;
+            this.part.loopEnd = "0:0:" + this.notes.length;
+        },
+        remove: function remove() {
+            this.$emit('remove');
         }
     },
-
+    props: ['sequence', 'index'],
     data: function data() {
         return {
-            sequence: {},
+            part: {},
             notes: []
         };
     }
@@ -2036,14 +2040,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
+  mounted: function mounted() {},
 
-
-	methods: {},
-	props: ['synth'],
-	data: function data() {
-		return {};
-	}
+  methods: {
+    remove: function remove() {
+      this.$emit('remove');
+    }
+  },
+  props: ['synth', 'index'],
+  data: function data() {
+    return {};
+  }
 });
 
 /***/ }),
@@ -2162,22 +2169,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {},
+  mounted: function mounted() {},
 
 
-	methods: {
-		addSequence: function addSequence() {
-			console.log('Add sequence');
-		}
-	},
+  methods: {
+    add: function add() {
+      var sequence = { id: 0, name: 'sequence' };
+      this.sequences.push(sequence);
+    }
+  },
 
-	data: function data() {
-		return {
-			sequences: [{ id: 1 }, { id: 2 }, { id: 3 }]
-		};
-	}
+  data: function data() {
+    return {
+      sequences: [{ id: 1, name: 'seq 01' }, { id: 2, name: 'seq 02' }, { id: 3, name: 'seq 03' }]
+    };
+  }
 });
 
 /***/ }),
@@ -2226,20 +2239,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {},
+    mounted: function mounted() {},
 
 
-  methods: {
-    addSynth: function addSynth() {
-      console.log('Add synth');
+    methods: {
+        add: function add() {
+            var synth = { id: 0, name: 'synth', type: '' };
+            this.synths.push(synth);
+        }
+    },
+
+    data: function data() {
+        return {
+            synths: [{ id: 1, name: 'synth one' }, { id: 2, name: 'synth two' }, { id: 3, name: 'synth three' }]
+        };
     }
-  },
-
-  data: function data() {
-    return {
-      synths: [{ id: 1, name: 'synth one' }, { id: 2, name: 'synth two' }, { id: 3, name: 'synth three' }]
-    };
-  }
 });
 
 /***/ }),
@@ -2306,21 +2320,21 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.global-bpm {\n\twidth: 60px; \n\tcolor: #000;\n\ttext-align: right;\n\tpadding: 4px;\n}\n", ""]);
+exports.push([module.i, "\n.global-bpm {\r\n\twidth: 60px; \r\n\tcolor: #000;\r\n\ttext-align: right;\r\n\tpadding: 4px;\n}\r\n", ""]);
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.has-error[data-v-5fd6d32d] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-5fd6d32d] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\r\n", ""]);
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n    border: solid 1px #CCC;\n    border-bottom: solid 2px #CCC;\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\n    border-bottom: solid 2px #009900;\n}\n\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    border: solid 1px #CCC;\r\n    border-bottom: solid 2px #CCC;\r\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\r\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\r\n    border-bottom: solid 2px #009900;\n}\r\n\r\n", ""]);
 
 /***/ }),
 /* 45 */
@@ -19622,7 +19636,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19660,7 +19674,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Synth.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Synth.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Synth.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19698,7 +19712,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19732,7 +19746,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Config.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Config.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 module.exports = Component.exports
@@ -19752,7 +19766,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/FX.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\FX.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FX.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19786,7 +19800,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Mix.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Mix.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 module.exports = Component.exports
@@ -19806,7 +19820,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Seq.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Seq.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Seq.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19840,7 +19854,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Synth.vue"
+Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Synth.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Synth.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19897,7 +19911,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "button"
     },
     on: {
-      "click": _vm.addSynth
+      "click": _vm.add
     }
   }, [_c('i', {
     staticClass: "fa fa-plus"
@@ -19907,9 +19921,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-header"
   }, [_c('div', {
     staticClass: "table-caption"
-  }, [_vm._v("\n                    Synth\n                ")])])
+  }, [_vm._v("\r\n                    Synth\r\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Base")]), _vm._v(" "), _c('th', [_vm._v("Params")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Params")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -19964,7 +19978,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.bpm = $event.target.value
       }
     }
-  }), _vm._v(" BPM\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }), _vm._v(" BPM\r\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "id": "transport-stop-button"
     },
@@ -20025,7 +20039,15 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(_vm.synth.id))]), _vm._v(" "), _c('td', [_vm._v("\n        " + _vm._s(_vm.synth.name) + "\n    ")]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
+  return _c('tr', [_c('td', [_vm._v(_vm._s(_vm.synth.id))]), _vm._v(" "), _c('td', [_vm._v("\r\n        " + _vm._s(_vm.synth.name) + "\r\n    ")]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('button', {
+    staticClass: "btn btn-outline btn-xs",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.remove
+    }
+  }, [_vm._v("DEL")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20063,9 +20085,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-light"
   }, [_vm._m(0), _vm._v(" "), _c('table', {
     staticClass: "table table-bordered"
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.sequences), function(sequence) {
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.sequences), function(sequence, index) {
     return _c("sequence", {
-      tag: "tr"
+      key: sequence.id,
+      tag: "tr",
+      attrs: {
+        "sequence": sequence,
+        "index": index
+      },
+      on: {
+        "remove": function($event) {
+          _vm.sequences.splice(index, 1)
+        }
+      }
     })
   }))]), _vm._v(" "), _c('div', {
     staticClass: "table-footer"
@@ -20077,7 +20109,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "button"
     },
     on: {
-      "click": _vm.addSequence
+      "click": _vm.add
     }
   }, [_c('i', {
     staticClass: "fa fa-plus"
@@ -20087,7 +20119,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-header"
   }, [_c('div', {
     staticClass: "table-caption"
-  }, [_vm._v("\n                    Seq\n                ")])])
+  }, [_vm._v("\r\n                    Seq\r\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Instrument")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
@@ -20143,7 +20175,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-plus"
-  })])]), _vm._v(" "), _c('td')])
+  })])]), _vm._v(" "), _c('td', [_c('button', {
+    staticClass: "btn btn-outline btn-xs",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.remove
+    }
+  }, [_vm._v("DEL")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
