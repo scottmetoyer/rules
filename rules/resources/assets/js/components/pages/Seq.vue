@@ -12,7 +12,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Instrument</th>
+                        <th>Synth</th>
                         <th>Pattern</th>
                         <th>Func</th>
                     </tr>

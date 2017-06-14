@@ -1,10 +1,14 @@
 <template>
 <tr>
     <td>{{ this._uid }}</td>
-    <td>{{ synth.name }}</td>
+    <td><input type="text" class="parameter" v-model="synth.name"/></td>
     <td>
+        <select class="parameter" v-model="synth.instrument">
+            <option v-for="i in instruments">{{ i }}</option>
+        </select>
     </td>
     <td>
+        
     </td>
     <td>
         <button type="button" class="btn btn-outline btn-xs" @click="remove">DEL</button>
@@ -24,6 +28,21 @@ export default {
         props: ['synth', 'index'],
 		data: function() {
 			return {
+                instrument: {},
+                instruments: [
+                    'AMSynth',
+                    'DuoSynth',
+                    'FMSynth',
+                    'MembraneSynth',
+                    'MetalSynth',
+                    'MonoSynth',
+                    'Monophonic',
+                    'NoiseSynth',
+                    'PluckSynth',
+                    'PolySynth',
+                    'Sampler',
+                    'Synth'
+                ]
 			}
 		}
     }

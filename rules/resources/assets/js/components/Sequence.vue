@@ -2,7 +2,11 @@
 <tr>
     <td>{{ this._uid }}</td>
     <td>{{ sequence.name }}</td>
-    <td></td>
+    <td>
+        <select v-model="sequence.synth">
+            <option v-for="s in shared_state.synths">{{ s.name }}</option>
+        </select>
+    </td>
     <td>
         <span>
             <input type="text" class="step" v-for="note in notes" v-model="note.value" v-bind:class="{ 'has-error': note.hasError, 'is-playing': note.isPlaying }"/>
@@ -87,7 +91,8 @@ export default {
 		data: function() {
 			return {
                 part: {},
-				notes: []
+				notes: [],
+                shared_state: window.shared_state
 			}
 		}
     }

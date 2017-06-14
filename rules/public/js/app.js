@@ -1026,6 +1026,11 @@ window.Vue = __webpack_require__(9);
 var VueRouter = __webpack_require__(61);
 Vue.use(VueRouter);
 
+// Set up shared state global object
+window.shared_state = {
+	synths: []
+};
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -1942,6 +1947,10 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -2014,7 +2023,8 @@ module.exports = function spread(callback) {
     data: function data() {
         return {
             part: {},
-            notes: []
+            notes: [],
+            shared_state: window.shared_state
         };
     }
 });
@@ -2040,19 +2050,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {},
+    mounted: function mounted() {},
 
-  methods: {
-    remove: function remove() {
-      this.$emit('remove');
+    methods: {
+        remove: function remove() {
+            this.$emit('remove');
+        }
+    },
+    props: ['synth', 'index'],
+    data: function data() {
+        return {
+            instrument: {},
+            instruments: ['AMSynth', 'DuoSynth', 'FMSynth', 'MembraneSynth', 'MetalSynth', 'MonoSynth', 'Monophonic', 'NoiseSynth', 'PluckSynth', 'PolySynth', 'Sampler', 'Synth']
+        };
     }
-  },
-  props: ['synth', 'index'],
-  data: function data() {
-    return {};
-  }
 });
 
 /***/ }),
@@ -2249,17 +2266,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add() {
-            var synth = { name: 'new synth', type: '' };
-            this.synths.push(synth);
+            var synth = { name: 'new synth', instrument: 'Monophonic' };
+            this.shared_state.synths.push(synth);
         },
         remove: function remove(index) {
-            this.synths.splice(index, 1);
+            this.shared_state.synths.splice(index, 1);
         }
     },
 
     data: function data() {
         return {
-            synths: [{ name: 'synth one' }, { name: 'synth two' }, { name: 'synth three' }]
+            shared_state: window.shared_state
         };
     }
 });
@@ -19895,7 +19912,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-light"
   }, [_vm._m(0), _vm._v(" "), _c('table', {
     staticClass: "table table-bordered"
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.synths), function(synth, index) {
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.shared_state.synths), function(synth, index) {
     return _c("synth", {
       key: synth,
       tag: "tr",
@@ -19931,7 +19948,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-caption"
   }, [_vm._v("\r\n                    Synth\r\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Params")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Instrument")]), _vm._v(" "), _c('th', [_vm._v("Params")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -20047,7 +20064,48 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.synth.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('button', {
+  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.synth.name),
+      expression: "synth.name"
+    }],
+    staticClass: "parameter",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.synth.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.synth.name = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('td', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.synth.instrument),
+      expression: "synth.instrument"
+    }],
+    staticClass: "parameter",
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.synth.instrument = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.instruments), function(i) {
+    return _c('option', [_vm._v(_vm._s(i))])
+  }))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('button', {
     staticClass: "btn btn-outline btn-xs",
     attrs: {
       "type": "button"
@@ -20129,7 +20187,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-caption"
   }, [_vm._v("\r\n                    Seq\r\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Instrument")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Synth")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -20144,7 +20202,27 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.sequence.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
+  return _c('tr', [_c('td', [_vm._v(_vm._s(this._uid))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.sequence.name))]), _vm._v(" "), _c('td', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.sequence.synth),
+      expression: "sequence.synth"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.sequence.synth = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.shared_state.synths), function(s) {
+    return _c('option', [_vm._v(_vm._s(s.name))])
+  }))]), _vm._v(" "), _c('td', [_c('span', _vm._l((_vm.notes), function(note) {
     return _c('input', {
       directives: [{
         name: "model",

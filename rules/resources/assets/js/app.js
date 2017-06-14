@@ -12,6 +12,12 @@ window.Vue = require('vue');
 var VueRouter = require('vue-router/dist/vue-router.js');
 Vue.use(VueRouter);
 
+
+// Set up shared state global object
+window.shared_state = {
+	synths: []
+};
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -12,14 +12,14 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Type</th>
+                        <th>Instrument</th>
                         <th>Params</th>
                         <th>Func</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr is="synth" 
-                        v-for="(synth, index) in synths"
+                        v-for="(synth, index) in shared_state.synths"
                         v-bind:synth="synth"
                         v-bind:index="index"
                         v-bind:key="synth"
@@ -43,20 +43,17 @@ export default {
 
     	methods: {
             add: function() {
-                var synth = { name: 'new synth', type: '' };
-                this.synths.push(synth);
+                var synth = { name: 'new synth', instrument: 'Monophonic' };
+                this.shared_state.synths.push(synth);
 		    },
             remove: function(index) {
-                this.synths.splice(index, 1);
+                this.shared_state.synths.splice(index, 1);
             }
 	   	},
 
 		data: function() {
 			return {
-                synths: [
-                    { name: 'synth one' }, 
-                    { name: 'synth two' }, 
-                    { name: 'synth three' }]
+                shared_state: window.shared_state
 			}
 		}
     }
