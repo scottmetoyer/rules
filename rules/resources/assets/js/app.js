@@ -39,7 +39,6 @@ window.shared_state = {
 // Initialize Vue components
 Vue.component('transport', require('./components/Transport.vue'));
 Vue.component('sequence', require('./components/Sequence.vue'));
-Vue.component('synth', require('./components/Synth.vue'));
 
 const Seq = Vue.component('SequencePage', require('./components/pages/Seq.vue'));
 const Synth = Vue.component('SynthPage', require('./components/pages/Synth.vue'));

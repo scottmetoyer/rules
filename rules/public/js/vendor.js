@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory){
@@ -1648,9 +1648,9 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory){
 	        var sixteenths = quarters % 1 * 4;
 	        quarters = Math.floor(quarters) % this._timeSignature();
 	        sixteenths = sixteenths.toString();
-	        if (sixteenths.length > 3) {
+	        //if (sixteenths.length > 3) {
 	            sixteenths = parseFloat(sixteenths).toFixed(3);
-	        }
+	        //}
 	        var progress = [
 	            measures,
 	            quarters,
@@ -32706,18 +32706,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 68:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(9);
-__webpack_require__(3);
-__webpack_require__(8);
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-
-/***/ 7:
+/***/ 5:
 /***/ (function(module, exports) {
 
 var g;
@@ -32745,7 +32734,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 8:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -35130,7 +35119,18 @@ if (typeof jQuery === 'undefined') {
 
 /***/ }),
 
-/***/ 9:
+/***/ 63:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(7);
+__webpack_require__(3);
+__webpack_require__(6);
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44825,8 +44825,8 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ })
 
-},[68]);
+},[63]);

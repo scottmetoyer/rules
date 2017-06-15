@@ -17,13 +17,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr is="synth" 
-                        v-for="(synth, index) in shared_state.synths"
-                        v-bind:name="synth.name"
-                        v-bind:instrument="synth.instrument"
-                        v-bind:index="index"
-                        v-bind:key="synth.id"
-                        v-on:remove="remove(index)"></tr>
+                    <tr v-for="(synth, index) in shared_state.synths">
+                        <td><input type="text" class="parameter" v-model="synth.name"/></td>
+                        <td>
+                            <select class="parameter" v-model="synth.instrumentName" v-on:change="instrumentChanged(synth)">
+                                <option v-for="i in instruments">{{ i }}</option>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td><button type="button" class="btn btn-outline btn-xs" @click="remove(index)">DEL</button></td>
+                    </tr>
                 </tbody>
             </table>
             <div class="table-footer">
@@ -38,22 +41,42 @@
 
 <script>
 export default {
-		mounted() {
+		mounted() { 
         },
-
     	methods: {
             add: function() {
-                var synth = { id: this.shared_state.uniqueId(), name: 'new synth', instrument: 'Monophonic' };
+                var synth = { 
+                    id: this.shared_state.uniqueId(), 
+                    name: 'new synth', 
+                    instrumentName: 'Synth',
+                    instrument: new Tone.Synth()
+                };
                 this.shared_state.synths.push(synth);
 		    },
             remove: function(index) {
                 this.shared_state.synths.splice(index, 1);
+            },
+            instrumentChanged: function(synth) {
+                // Create new Tone instrument instance based on the name of the instrument
+                synth.instrument = eval("new Tone." + synth.instrumentName + "();");
             }
 	   	},
-
 		data: function() {
 			return {
-                shared_state: window.shared_state
+                shared_state: window.shared_state,
+                instruments: [
+                    'AMSynth',
+                    'DuoSynth',
+                    'FMSynth',
+                    'MembraneSynth',
+                    'MetalSynth',
+                    'MonoSynth',
+                    'NoiseSynth',
+                    'PluckSynth',
+                    'PolySynth',
+                    'Sampler',
+                    'Synth'
+                ]
 			}
 		}
     }
