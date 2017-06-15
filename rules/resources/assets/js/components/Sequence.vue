@@ -42,7 +42,6 @@ export default {
                 // Check for empty textbox
                 if (/\S/.test(event.value)) {
                     try {
-                        console.log(self.synth);
                         var t = Tone.Frequency(event.value);
                         self.synth.instrument.triggerAttackRelease(t, event.dur, time);
                     } catch (error) {
