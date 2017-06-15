@@ -13,6 +13,7 @@
                         <th>Name</th>
                         <th>Synth</th>
                         <th>Pattern</th>
+                        <th>Params</th>
                         <th>Func</th>
                     </tr>
                 </thead>

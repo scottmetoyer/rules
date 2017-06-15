@@ -14,6 +14,9 @@
         <button class="sequence-button" @click="addStep"><i class="fa fa-plus"></i></button>
     </td>
     <td>
+        
+    </td>
+    <td>
         <button type="button" class="btn btn-outline btn-xs" @click="remove">DEL</button>
     </td>
 </tr>
