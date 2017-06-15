@@ -19,9 +19,10 @@
                 <tbody>
                     <tr is="synth" 
                         v-for="(synth, index) in shared_state.synths"
-                        v-bind:synth="synth"
+                        v-bind:name="synth.name"
+                        v-bind:instrument="synth.instrument"
                         v-bind:index="index"
-                        v-bind:key="synth"
+                        v-bind:key="synth.id"
                         v-on:remove="remove(index)"></tr>
                 </tbody>
             </table>

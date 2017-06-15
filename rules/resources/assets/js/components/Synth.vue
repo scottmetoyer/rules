@@ -1,8 +1,8 @@
 <template>
 <tr>
-    <td><input type="text" class="parameter" v-model="synth.name"/></td>
+    <td><input type="text" class="parameter" v-model="name"/></td>
     <td>
-        <select class="parameter" v-model="synth.instrument">
+        <select class="parameter" v-model="instrument">
             <option v-for="i in instruments">{{ i }}</option>
         </select>
     </td>
@@ -18,16 +18,21 @@
 <script>
 export default {
 		mounted() {
+            // Create the initial synth
         },
     	methods: {
             remove: function() {
                 this.$emit('remove');
             }
 	   	},
-        props: ['synth', 'index'],
+        watch: {
+            instrument:  function (value) {
+                console.log('value changed to ' + value);
+            }
+        },
+        props: ['name', 'instrument', 'index'],
 		data: function() {
 			return {
-                instrument: {},
                 instruments: [
                     'AMSynth',
                     'DuoSynth',

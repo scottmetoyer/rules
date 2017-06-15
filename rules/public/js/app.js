@@ -2065,17 +2065,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        // Create the initial synth
+    },
 
     methods: {
         remove: function remove() {
             this.$emit('remove');
         }
     },
-    props: ['synth', 'index'],
+    watch: {
+        instrument: function instrument(value) {
+            console.log('value changed to ' + value);
+        }
+    },
+    props: ['name', 'instrument', 'index'],
     data: function data() {
         return {
-            instrument: {},
             instruments: ['AMSynth', 'DuoSynth', 'FMSynth', 'MembraneSynth', 'MetalSynth', 'MonoSynth', 'Monophonic', 'NoiseSynth', 'PluckSynth', 'PolySynth', 'Sampler', 'Synth']
         };
     }
@@ -2267,6 +2273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {},
@@ -2353,21 +2360,21 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.global-bpm {\r\n\twidth: 60px; \r\n\tcolor: #000;\r\n\ttext-align: right;\r\n\tpadding: 4px;\n}\r\n", ""]);
+exports.push([module.i, "\n.global-bpm {\n\twidth: 60px; \n\tcolor: #000;\n\ttext-align: right;\n\tpadding: 4px;\n}\n", ""]);
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.has-error[data-v-5fd6d32d] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-5fd6d32d] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n", ""]);
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
-exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\r\n    background-color: #FFCCCC;\r\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    border: solid 1px #CCC;\r\n    border-bottom: solid 2px #CCC;\r\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\r\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\r\n    height: 24px;\r\n    width: 24px;\r\n    font-size: 9px;\r\n    padding: 0px;\r\n    text-align: center;\r\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\r\n    border-bottom: solid 2px #009900;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-cf9bd840] {\n    background-color: #FFCCCC;\n    border: solid 1px #990000 !important;\n}\n.step[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n    border: solid 1px #CCC;\n    border-bottom: solid 2px #CCC;\n    margin-right: 3px;\n}\n.step[data-v-cf9bd840]:last-child {\n    margin-right: 0!important;\n}\n.sequence-button[data-v-cf9bd840] {\n    height: 24px;\n    width: 24px;\n    font-size: 9px;\n    padding: 0px;\n    text-align: center;\n    vertical-align: middle;\n}\n.is-playing[data-v-cf9bd840] {\n    border-bottom: solid 2px #009900;\n}\n\n", ""]);
 
 /***/ }),
 /* 45 */
@@ -19669,7 +19676,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Sequence.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Sequence.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sequence.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19707,7 +19714,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Synth.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Synth.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Synth.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19745,7 +19752,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\Transport.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/Transport.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Transport.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19779,7 +19786,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Config.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Config.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 module.exports = Component.exports
@@ -19799,7 +19806,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\FX.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/FX.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FX.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19833,7 +19840,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Mix.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Mix.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 module.exports = Component.exports
@@ -19853,7 +19860,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Seq.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Seq.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Seq.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19887,7 +19894,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\Code\\rules\\rules\\resources\\assets\\js\\components\\pages\\Synth.vue"
+Component.options.__file = "/Users/scottmetoyer/src/rules/rules/resources/assets/js/components/pages/Synth.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Synth.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -19922,10 +19929,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table table-bordered"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.shared_state.synths), function(synth, index) {
     return _c("synth", {
-      key: synth,
+      key: synth.id,
       tag: "tr",
       attrs: {
-        "synth": synth,
+        "name": synth.name,
+        "instrument": synth.instrument,
         "index": index
       },
       on: {
@@ -19954,7 +19962,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-header"
   }, [_c('div', {
     staticClass: "table-caption"
-  }, [_vm._v("\r\n                    Synth\r\n                ")])])
+  }, [_vm._v("\n                    Synth\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Instrument")]), _vm._v(" "), _c('th', [_vm._v("Params")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
@@ -20011,7 +20019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.bpm = $event.target.value
       }
     }
-  }), _vm._v(" BPM\r\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }), _vm._v(" BPM\n\t\t\t")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "id": "transport-stop-button"
     },
@@ -20076,28 +20084,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.synth.name),
-      expression: "synth.name"
+      value: (_vm.name),
+      expression: "name"
     }],
     staticClass: "parameter",
     attrs: {
       "type": "text"
     },
     domProps: {
-      "value": (_vm.synth.name)
+      "value": (_vm.name)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.synth.name = $event.target.value
+        _vm.name = $event.target.value
       }
     }
   })]), _vm._v(" "), _c('td', [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.synth.instrument),
-      expression: "synth.instrument"
+      value: (_vm.instrument),
+      expression: "instrument"
     }],
     staticClass: "parameter",
     on: {
@@ -20108,7 +20116,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           var val = "_value" in o ? o._value : o.value;
           return val
         });
-        _vm.synth.instrument = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+        _vm.instrument = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }
     }
   }, _vm._l((_vm.instruments), function(i) {
@@ -20193,7 +20201,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table-header"
   }, [_c('div', {
     staticClass: "table-caption"
-  }, [_vm._v("\r\n                    Seq\r\n                ")])])
+  }, [_vm._v("\n                    Seq\n                ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Synth")]), _vm._v(" "), _c('th', [_vm._v("Pattern")]), _vm._v(" "), _c('th', [_vm._v("Func")])])])
 }]}
