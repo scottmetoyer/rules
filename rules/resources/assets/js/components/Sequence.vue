@@ -2,7 +2,7 @@
 <tr>
     <td><input type="text" class="parameter" v-model="sequence.name"/></td>
     <td>
-        <select class="parameter" v-model="sequence.synth">
+        <select class="parameter" v-model="selectedSynthId" v-on:change="synthChanged">
             <option v-for="s in shared_state.synths" v-bind:value="s.id">{{ s.name }}</option>
         </select>
     </td>
@@ -16,15 +16,14 @@
     <td>
         <button type="button" class="btn btn-outline btn-xs" @click="remove">DEL</button>
     </td>
-    </tr>
+</tr>
 </template>
 
 <script>
 export default {
 		mounted() {
             var self = this;
-            var synth = new Tone.Synth().toMaster();
-
+           
             // Initialize the notes
             for(var i = 0; i < 16; i++) {
                 self.notes.push({ value: '', time: '0:0:' + i, dur: '4n', hasError: false, isPlaying: false });
@@ -44,7 +43,7 @@ export default {
                 if (/\S/.test(event.value)) {
                     try {
                         var t = Tone.Frequency(event.value);
-                        synth.triggerAttackRelease(t, event.dur, time);
+                        this.synth.triggerAttackRelease(t, event.dur, time);
                     } catch (error) {
                         // Change the color of the textbox if it has invalid input
                         event.hasError = true;
@@ -54,6 +53,9 @@ export default {
             
             self.part.loop = true;
             self.part.start('0:0:1');
+
+            // Set the selected synth
+            self.synthChanged();
         },
 
     	methods: {
@@ -84,6 +86,9 @@ export default {
                 this.part.dispose();
 
                 this.$emit('remove');
+            },
+            synthChanged: function() {
+                this.synth = shared_state.synths.find(x => x.id === this.selectedSynthId);
             }
 	   	},
         props: ['sequence', 'index'],
@@ -91,6 +96,8 @@ export default {
 			return {
                 part: {},
 				notes: [],
+                synth: {},
+                selectedSynthId: '',
                 shared_state: window.shared_state
 			}
 		}

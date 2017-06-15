@@ -58,7 +58,7 @@ export default {
             },
             instrumentChanged: function(synth) {
                 // Create new Tone instrument instance based on the name of the instrument
-                synth.instrument = eval("new Tone." + synth.instrumentName + "();");
+                synth.instrument = eval("new Tone." + synth.instrumentName + "().toMaster();");
             }
 	   	},
 		data: function() {

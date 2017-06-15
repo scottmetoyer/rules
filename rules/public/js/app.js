@@ -1964,7 +1964,6 @@ module.exports = function spread(callback) {
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var self = this;
-        var synth = new Tone.Synth().toMaster();
 
         // Initialize the notes
         for (var i = 0; i < 16; i++) {
@@ -1985,7 +1984,7 @@ module.exports = function spread(callback) {
             if (/\S/.test(event.value)) {
                 try {
                     var t = Tone.Frequency(event.value);
-                    synth.triggerAttackRelease(t, event.dur, time);
+                    this.synth.triggerAttackRelease(t, event.dur, time);
                 } catch (error) {
                     // Change the color of the textbox if it has invalid input
                     event.hasError = true;
@@ -1995,6 +1994,9 @@ module.exports = function spread(callback) {
 
         self.part.loop = true;
         self.part.start('0:0:1');
+
+        // Set the selected synth
+        self.synthChanged();
     },
 
 
@@ -2026,6 +2028,14 @@ module.exports = function spread(callback) {
             this.part.dispose();
 
             this.$emit('remove');
+        },
+        synthChanged: function synthChanged() {
+            var _this = this;
+
+            this.synth = shared_state.synths.find(function (x) {
+                return x.id === _this.selectedSynthId;
+            });
+            console.log(this.synth);
         }
     },
     props: ['sequence', 'index'],
@@ -2033,6 +2043,8 @@ module.exports = function spread(callback) {
         return {
             part: {},
             notes: [],
+            synth: {},
+            selectedSynthId: '',
             shared_state: window.shared_state
         };
     }
@@ -2248,7 +2260,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         instrumentChanged: function instrumentChanged(synth) {
             // Create new Tone instrument instance based on the name of the instrument
-            synth.instrument = eval("new Tone." + synth.instrumentName + "();");
+            synth.instrument = eval("new Tone." + synth.instrumentName + "().toMaster();");
         }
     },
     data: function data() {
@@ -20137,20 +20149,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.sequence.synth),
-      expression: "sequence.synth"
+      value: (_vm.selectedSynthId),
+      expression: "selectedSynthId"
     }],
     staticClass: "parameter",
     on: {
-      "change": function($event) {
+      "change": [function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
           return o.selected
         }).map(function(o) {
           var val = "_value" in o ? o._value : o.value;
           return val
         });
-        _vm.sequence.synth = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
+        _vm.selectedSynthId = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }, _vm.synthChanged]
     }
   }, _vm._l((_vm.shared_state.synths), function(s) {
     return _c('option', {
