@@ -1983,11 +1983,13 @@ module.exports = function spread(callback) {
             // Check for empty textbox
             if (/\S/.test(event.value)) {
                 try {
+                    console.log(self.synth);
                     var t = Tone.Frequency(event.value);
-                    this.synth.triggerAttackRelease(t, event.dur, time);
+                    self.synth.instrument.triggerAttackRelease(t, event.dur, time);
                 } catch (error) {
                     // Change the color of the textbox if it has invalid input
                     event.hasError = true;
+                    console.log(error);
                 }
             }
         }, self.notes);
@@ -2035,7 +2037,6 @@ module.exports = function spread(callback) {
             this.synth = shared_state.synths.find(function (x) {
                 return x.id === _this.selectedSynthId;
             });
-            console.log(this.synth);
         }
     },
     props: ['sequence', 'index'],
@@ -2251,7 +2252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.shared_state.uniqueId(),
                 name: 'new synth',
                 instrumentName: 'Synth',
-                instrument: new Tone.Synth()
+                instrument: new Tone.Synth().toMaster()
             };
             this.shared_state.synths.push(synth);
         },

@@ -49,7 +49,7 @@ export default {
                     id: this.shared_state.uniqueId(), 
                     name: 'new synth', 
                     instrumentName: 'Synth',
-                    instrument: new Tone.Synth()
+                    instrument: new Tone.Synth().toMaster()
                 };
                 this.shared_state.synths.push(synth);
 		    },

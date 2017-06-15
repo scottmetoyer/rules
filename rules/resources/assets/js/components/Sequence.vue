@@ -42,11 +42,13 @@ export default {
                 // Check for empty textbox
                 if (/\S/.test(event.value)) {
                     try {
+                        console.log(self.synth);
                         var t = Tone.Frequency(event.value);
-                        this.synth.triggerAttackRelease(t, event.dur, time);
+                        self.synth.instrument.triggerAttackRelease(t, event.dur, time);
                     } catch (error) {
                         // Change the color of the textbox if it has invalid input
                         event.hasError = true;
+                        console.log(error);
                     }
                 }
             }, self.notes);
