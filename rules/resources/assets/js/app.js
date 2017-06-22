@@ -45,6 +45,7 @@ const Synth = Vue.component('SynthPage', require('./components/pages/Synth.vue')
 const FX = Vue.component('EffectsPage', require('./components/pages/FX.vue'));
 const Mix = Vue.component('MixPage', require('./components/pages/Mix.vue'));
 const Config = Vue.component('ConfigPage', require('./components/pages/Config.vue'));
+const Timeline = Vue.component('TimelinePage', require('./components/pages/Timeline.vue'));
 
 var router = new VueRouter({
 	routes: [
@@ -53,6 +54,7 @@ var router = new VueRouter({
 		{ path: '/fx', component: FX },
 		{ path: '/mix', component: Mix },
 		{ path: '/config', component: Config },
+		{ path: '/timeline', component: Timeline },
 		{ path: '/', redirect: '/seq' },
 	],
 });

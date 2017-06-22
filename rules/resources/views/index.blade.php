@@ -32,6 +32,10 @@
                     <a><i class="px-nav-icon ion-erlenmeyer-flask"></i><span class="px-nav-label">FX</span></a>
                 </router-link>
 
+				<router-link class="px-nav-item" tag="li" to="/timeline" active-class="active">
+                    <a><i class="px-nav-icon ion-code-working"></i><span class="px-nav-label">Timeline</span></a>
+                </router-link>
+
                 <router-link class="px-nav-item" tag="li" to="/mix" active-class="active">
                     <a><i class="px-nav-icon ion-levels"></i><span class="px-nav-label">Mix</span></a>
                 </router-link>
