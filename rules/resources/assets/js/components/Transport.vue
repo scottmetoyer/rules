@@ -39,6 +39,7 @@
     	methods: {
 			play() {
 				Tone.Transport.start();
+				 console.log(Tone.Transport);
 		   	},
 		   	stop() {
 				Tone.Transport.stop();
