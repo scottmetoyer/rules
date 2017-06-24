@@ -11,15 +11,19 @@
                 <thead>
                     <tr>
                         <th>Time</th>
-                        <th>Event</th>
+                        <th>Seq</th>
                         <th>Func</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr v-for="(event, index) in events">
+                        <td><input type="text" class="parameter" v-model="event.time"/></td>
+                        <td>
+                            <select class="parameter" v-model="event.sequence">
+                            </select>
+                        </td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><button type="button" class="btn btn-outline btn-xs" @click="remove(index)">DEL</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -45,6 +49,7 @@ export default {
 	   	},
 		data: function() {
 			return {
+                events: []
 			}
 		}
     }
